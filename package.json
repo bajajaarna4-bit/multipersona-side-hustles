@@ -1,0 +1,19 @@
+{
+  "name": "polymath-collective",
+  "version": "1.0.0",
+  "description": "The Anti-Niche Hub for Extroverts and Multi-Passionate Creators",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "polymath",
+    "multi-passionate",
+    "animations",
+    "side-hustle",
+    "interactive"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
