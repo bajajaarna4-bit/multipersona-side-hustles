@@ -2,9 +2,10 @@
   "name": "polymath-collective",
   "version": "1.0.0",
   "description": "The Anti-Niche Hub for Extroverts and Multi-Passionate Creators",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "build": "echo 'Static build ready'",
+    "start": "node local-server.js",
+    "dev": "node local-server.js"
   },
   "keywords": [
     "polymath",
@@ -16,4 +17,3 @@
   "author": "",
   "license": "MIT"
 }
-

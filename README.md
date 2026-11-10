@@ -21,7 +21,9 @@ Simply double-click `index.html` or drag it into any modern web browser (Google 
 ### Option 2: Local HTTP Server (Node.js)
 ```bash
 # In the project directory:
-node server.js
+node local-server.js
+# or:
+npm start
 ```
 Then navigate to: `http://localhost:3000`
 
