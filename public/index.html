@@ -1,0 +1,3037 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polymath Collective | The Anti-Niche Hub for Multi-Passionates</title>
+  <meta name="description" content="A vibrant community and side hustle launchpad for extroverts, polymaths, and intellectual omnivores too curious for just one career.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              coral: '#FF5E5E',
+              violet: '#7A5AF8',
+              yellow: '#FFC837',
+              teal: '#00D6B2',
+              pink: '#FF4288',
+              navy: '#0E1122',
+              darkcard: '#161B30',
+              cream: '#FAF7F0',
+              softgray: '#F0ECE1',
+            }
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'float-delayed': 'float 7s ease-in-out 2s infinite',
+            'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+            'spin-slow': 'spin 20s linear infinite',
+            'blob': 'blobMorph 8s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(2deg)' },
+            },
+            pulseSoft: {
+              '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+              '50%': { opacity: 0.88, transform: 'scale(1.02)' },
+            },
+            blobMorph: {
+              '0%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+              '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+              '100%': { borderRadius: '60% 40% 60% 40% / 40% 60% 40% 60%' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF7F0;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0E1122;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FF5E5E;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #7A5AF8;
+    }
+
+    /* Selection */
+    ::selection {
+      background: #FF5E5E;
+      color: #FFFFFF;
+    }
+
+    /* Flip Card 3D */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .card-flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* Custom Cursor */
+    @media (pointer: fine) {
+      body {
+        cursor: default;
+      }
+      .custom-cursor {
+        pointer-events: none;
+        position: fixed;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #FF5E5E;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+        z-index: 99999;
+      }
+      .custom-cursor-dot {
+        pointer-events: none;
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #7A5AF8;
+        transform: translate(-50%, -50%);
+        z-index: 100000;
+      }
+      .cursor-hover {
+        width: 56px;
+        height: 56px;
+        background-color: rgba(255, 94, 94, 0.15);
+        border-color: #7A5AF8;
+      }
+    }
+
+    /* Neo-Brutalist & Playful Shadow Styles */
+    .shadow-pop {
+      box-shadow: 4px 4px 0px #0E1122;
+    }
+    .dark .shadow-pop {
+      box-shadow: 4px 4px 0px #FFC837;
+    }
+    .shadow-pop-lg {
+      box-shadow: 7px 7px 0px #0E1122;
+    }
+    .dark .shadow-pop-lg {
+      box-shadow: 7px 7px 0px #7A5AF8;
+    }
+    .shadow-pop-coral {
+      box-shadow: 5px 5px 0px #FF5E5E;
+    }
+    .shadow-pop-violet {
+      box-shadow: 5px 5px 0px #7A5AF8;
+    }
+    .shadow-pop-yellow {
+      box-shadow: 5px 5px 0px #FFC837;
+    }
+    .shadow-pop-teal {
+      box-shadow: 5px 5px 0px #00D6B2;
+    }
+
+    /* Squiggle underline */
+    .squiggle-underline {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23FF5E5E' stroke-width='2' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      background-position: bottom;
+      background-size: 18px 6px;
+      padding-bottom: 5px;
+    }
+
+    /* Grid Background Pattern */
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(14, 17, 34, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(14, 17, 34, 0.05) 1px, transparent 1px);
+    }
+    .dark .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    /* Tape effect for sticky notes */
+    .sticky-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 24px;
+      background-color: rgba(255, 255, 255, 0.65);
+      border: 1px dashed rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+
+    /* Sticky note drag handling */
+    .sticky-note {
+      touch-action: none;
+      cursor: grab;
+      user-select: none;
+    }
+    .sticky-note:active {
+      cursor: grabbing;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .custom-cursor, .custom-cursor-dot {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-brand-navy dark:bg-brand-navy dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen relative selection:bg-brand-coral selection:text-white bg-grid-pattern overflow-x-hidden">
+
+  <!-- Custom Cursor Elements -->
+  <div id="cursorRing" class="custom-cursor hidden md:block"></div>
+  <div id="cursorDot" class="custom-cursor-dot hidden md:block"></div>
+
+  <!-- Announcement Ticker Banner -->
+  <div class="bg-brand-yellow text-brand-navy font-bold text-xs md:text-sm py-2 px-4 border-b-2 border-brand-navy overflow-hidden whitespace-nowrap z-50 relative select-none">
+    <div class="inline-block animate-[marquee_25s_linear_infinite] uppercase tracking-wider space-x-8">
+      <span>⚡ 100% LinkedIn-Free Zone</span>
+      <span>•</span>
+      <span>🍳 Cooking + 💻 Code + 🎵 Music = Your Next Empire</span>
+      <span>•</span>
+      <span>🔥 14,280 Multi-Hyphenates Jamming Live</span>
+      <span>•</span>
+      <span>✨ "You're not indecisive, you're multi-talented"</span>
+      <span>•</span>
+      <span>🚀 Side Hustle Hackathon Kicks Off in 3 Days</span>
+      <span>•</span>
+      <span>🧠 Stop apologising for having 47 open tabs</span>
+    </div>
+  </div>
+
+  <style>
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-brand-cream/85 dark:bg-brand-navy/85 border-b-2 border-brand-navy/15 dark:border-white/10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-coral rounded-xl p-1">
+        <div class="w-11 h-11 bg-gradient-to-tr from-brand-coral via-brand-violet to-brand-yellow rounded-xl flex items-center justify-center text-white text-2xl font-black shadow-pop border-2 border-brand-navy transition-transform group-hover:scale-105 group-hover:-rotate-3">
+          ⚡
+        </div>
+        <div>
+          <span class="font-display font-extrabold text-xl tracking-tight block leading-none text-brand-navy dark:text-white">
+            POLYMATH<span class="text-brand-coral">.</span>
+          </span>
+          <span class="text-[10px] uppercase font-mono font-bold tracking-widest text-brand-violet dark:text-brand-teal">
+            The Anti-Niche Hub
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7 font-bold text-sm">
+        <a href="#mixer" class="hover:text-brand-coral transition-colors flex items-center gap-1.5 focus:outline-none focus:text-brand-coral">
+          <span class="text-brand-violet">🧬</span> Interest Mixer
+        </a>
+        <a href="#hustles" class="hover:text-brand-coral transition-colors flex items-center gap-1.5 focus:outline-none focus:text-brand-coral">
+          <span class="text-brand-coral">🚀</span> Hustle Explorer
+        </a>
+        <a href="#networking" class="hover:text-brand-coral transition-colors flex items-center gap-1.5 focus:outline-none focus:text-brand-coral">
+          <span class="text-brand-yellow">👋</span> Jam Lounge
+        </a>
+        <a href="#events" class="hover:text-brand-coral transition-colors flex items-center gap-1.5 focus:outline-none focus:text-brand-coral">
+          <span class="text-brand-teal">🗓️</span> Meetups
+        </a>
+        <a href="#board" class="hover:text-brand-coral transition-colors flex items-center gap-1.5 focus:outline-none focus:text-brand-coral">
+          <span class="text-brand-pink">📌</span> Idea Wall
+        </a>
+        <a href="#stories" class="hover:text-brand-coral transition-colors flex items-center gap-1.5 focus:outline-none focus:text-brand-coral">
+          <span class="text-amber-500">⭐</span> Stories
+        </a>
+      </nav>
+
+      <!-- Action Controls (Sound, Dark Mode, Join CTA) -->
+      <div class="flex items-center gap-3">
+        <!-- Sound Effect Toggle -->
+        <button id="soundToggle" aria-label="Toggle Sound Effects" class="p-2.5 rounded-xl border-2 border-brand-navy dark:border-white/20 bg-white dark:bg-brand-darkcard shadow-pop text-sm font-bold hover:scale-105 active:scale-95 transition-all text-brand-navy dark:text-white" title="Enable/Disable Playful Sound Effects">
+          <span id="soundIcon">🔊</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button id="themeToggle" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl border-2 border-brand-navy dark:border-white/20 bg-white dark:bg-brand-darkcard shadow-pop text-sm font-bold hover:scale-105 active:scale-95 transition-all text-brand-navy dark:text-white" title="Toggle Light/Dark Theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+
+        <!-- Primary CTA -->
+        <a href="#join" class="hidden sm:inline-flex items-center gap-2 bg-brand-coral hover:bg-rose-500 text-white font-bold text-sm px-5 py-2.5 rounded-xl border-2 border-brand-navy shadow-pop hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-none transition-all">
+          <span>Join Free</span>
+          <span>→</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="lg:hidden p-2.5 rounded-xl border-2 border-brand-navy dark:border-white/20 bg-white dark:bg-brand-darkcard shadow-pop text-xl">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="lg:hidden hidden border-t-2 border-brand-navy/10 dark:border-white/10 bg-brand-cream dark:bg-brand-navy px-6 py-6 space-y-4">
+      <a href="#mixer" class="block font-bold text-lg hover:text-brand-coral py-1">🧬 Interest Mixer</a>
+      <a href="#hustles" class="block font-bold text-lg hover:text-brand-coral py-1">🚀 Hustle Explorer</a>
+      <a href="#networking" class="block font-bold text-lg hover:text-brand-coral py-1">👋 Jam Lounge (Networking)</a>
+      <a href="#events" class="block font-bold text-lg hover:text-brand-coral py-1">🗓️ Events & Meetups</a>
+      <a href="#board" class="block font-bold text-lg hover:text-brand-coral py-1">📌 Idea Jam Board</a>
+      <a href="#stories" class="block font-bold text-lg hover:text-brand-coral py-1">⭐ Polymath Stories</a>
+      <a href="#join" class="block text-center bg-brand-coral text-white font-bold py-3 rounded-xl border-2 border-brand-navy shadow-pop mt-4">Join 14,000+ Polymaths</a>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 1. HERO SECTION                            -->
+  <!-- ========================================== -->
+  <section class="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden">
+    <!-- Background Floating Blobs & Stickers -->
+    <div class="absolute -top-16 -left-16 w-80 h-80 bg-brand-yellow/25 dark:bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-20 w-96 h-96 bg-brand-violet/20 dark:bg-brand-violet/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 left-1/3 w-72 h-72 bg-brand-teal/20 dark:bg-brand-teal/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        
+        <!-- Eyebrow Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-brand-navy bg-white dark:bg-brand-darkcard dark:border-brand-teal shadow-pop text-xs md:text-sm font-extrabold uppercase tracking-wide text-brand-navy dark:text-brand-teal mb-6 animate-pulse-soft">
+          <span class="text-base">✨</span>
+          <span>For people who get bored doing just one thing</span>
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+        </div>
+
+        <!-- Main Chunky Headline -->
+        <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.08] text-brand-navy dark:text-white mb-6">
+          Too curious for <br class="hidden sm:inline" />
+          <span class="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-coral via-brand-violet to-brand-teal squiggle-underline">
+            one career.
+          </span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
+          You're not indecisive — you're <strong class="text-brand-navy dark:text-white font-extrabold">multi-talented</strong>. 
+          Discover weird & lucrative side hustles born at the intersection of your obsessions, and meet the crew to build them with.
+        </p>
+
+        <!-- CTA Buttons Row -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
+          <a href="#mixer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-coral hover:bg-rose-500 text-white font-extrabold text-lg px-8 py-4 rounded-2xl border-2 border-brand-navy shadow-pop-lg hover:-translate-y-1 active:translate-y-0.5 active:shadow-pop transition-all group">
+            <span>🧬 Find Your Unique Mix</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+          
+          <a href="#hustles" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-brand-darkcard text-brand-navy dark:text-white font-extrabold text-lg px-8 py-4 rounded-2xl border-2 border-brand-navy dark:border-white/20 shadow-pop-lg hover:-translate-y-1 active:translate-y-0.5 active:shadow-pop transition-all">
+            <span>🚀 Browse 12+ Hustles</span>
+          </a>
+        </div>
+
+        <!-- Social Proof Pill Row -->
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-bold text-gray-600 dark:text-gray-400">
+          <div class="flex items-center -space-x-2">
+            <span class="w-9 h-9 rounded-full bg-brand-coral border-2 border-brand-navy flex items-center justify-center text-xs text-white font-bold">👩‍💻</span>
+            <span class="w-9 h-9 rounded-full bg-brand-yellow border-2 border-brand-navy flex items-center justify-center text-xs text-brand-navy font-bold">👨‍🍳</span>
+            <span class="w-9 h-9 rounded-full bg-brand-teal border-2 border-brand-navy flex items-center justify-center text-xs text-brand-navy font-bold">🎧</span>
+            <span class="w-9 h-9 rounded-full bg-brand-violet border-2 border-brand-navy flex items-center justify-center text-xs text-white font-bold">✍️</span>
+            <span class="w-9 h-9 rounded-full bg-brand-pink border-2 border-brand-navy flex items-center justify-center text-xs text-white font-bold">+14k</span>
+          </div>
+          <span>14,280+ active members</span>
+          <span class="hidden sm:inline">•</span>
+          <span>Zero corporate jargon</span>
+          <span class="hidden sm:inline">•</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">● 218 Jamming Now</span>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- INTERACTIVE FLOATING INTEREST BUBBLES CANVAS -->
+      <!-- ========================================== -->
+      <div class="mt-14 relative max-w-5xl mx-auto">
+        <div class="relative bg-white/70 dark:bg-brand-darkcard/80 backdrop-blur-md rounded-3xl border-3 border-brand-navy dark:border-white/20 shadow-pop-lg p-6 sm:p-8 overflow-hidden">
+          
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 pb-4 border-b border-brand-navy/10 dark:border-white/10">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-brand-coral font-bold block">Interactive Physics Playground</span>
+              <h3 class="font-display font-bold text-lg sm:text-xl text-brand-navy dark:text-white">
+                Floating Interest Collider ⚛️
+              </h3>
+            </div>
+            <div class="text-xs font-medium text-gray-500 dark:text-gray-400 bg-brand-softgray dark:bg-white/5 px-3 py-1.5 rounded-full border border-brand-navy/10">
+              💡 Hover to repel • Click any bubble to pop a burst!
+            </div>
+          </div>
+
+          <!-- Canvas Container -->
+          <div class="relative w-full h-[320px] sm:h-[380px] rounded-2xl bg-gradient-to-b from-brand-cream/50 to-white dark:from-brand-navy/50 dark:to-brand-darkcard border-2 border-dashed border-brand-navy/20 dark:border-white/10 overflow-hidden cursor-crosshair">
+            <canvas id="bubbleCanvas" class="w-full h-full block"></canvas>
+            
+            <div id="bubbleScoreTag" class="absolute bottom-3 left-4 text-xs font-mono font-bold text-gray-500 dark:text-gray-400 pointer-events-none select-none">
+              Popped: <span id="poppedCount" class="text-brand-coral">0</span> bubbles | Physics: 60 FPS
+            </div>
+
+            <button id="resetBubblesBtn" class="absolute bottom-3 right-4 text-xs font-bold font-mono bg-white dark:bg-brand-navy px-3 py-1 rounded-lg border border-brand-navy/20 dark:border-white/20 shadow-sm hover:scale-105 active:scale-95 transition-transform text-brand-navy dark:text-white">
+              ↺ Respawn All
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 2. INTEREST MIXER (STANDOUT FEATURE!)       -->
+  <!-- ========================================== -->
+  <section id="mixer" class="py-20 md:py-28 bg-white dark:bg-brand-navy/60 border-y-3 border-brand-navy relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-violet text-white text-xs font-mono font-bold uppercase tracking-wider mb-3">
+          🧬 Interactive Personality Blender
+        </div>
+        <h2 class="font-display font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight mb-4">
+          The Polymath Interest Mixer
+        </h2>
+        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300">
+          Tap <strong class="text-brand-coral">3 to 5 interests</strong> below. Watch your live personality radar morph in real time and unveil tailor-made side hustle formulas.
+        </p>
+      </div>
+
+      <!-- Main Mixer Layout (2 Columns) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Interest Selector Chips -->
+        <div class="lg:col-span-7 bg-brand-cream dark:bg-brand-darkcard rounded-3xl p-6 sm:p-8 border-3 border-brand-navy dark:border-white/20 shadow-pop-lg">
+          <div class="flex items-center justify-between mb-6 pb-3 border-b border-brand-navy/10 dark:border-white/10">
+            <h3 class="font-display font-bold text-xl text-brand-navy dark:text-white flex items-center gap-2">
+              <span>Step 1: Select Your Ingredients</span>
+            </h3>
+            <span id="interestSelectionCounter" class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-brand-yellow text-brand-navy border border-brand-navy">
+              3 Selected (3-5 required)
+            </span>
+          </div>
+
+          <!-- Interest Tags Grid -->
+          <div id="interestChipsContainer" class="flex flex-wrap gap-2.5 sm:gap-3">
+            <!-- Chips injected via JS -->
+          </div>
+
+          <!-- Quick Actions / Shuffle -->
+          <div class="mt-8 pt-4 border-t border-brand-navy/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
+            <button id="shuffleInterestsBtn" class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold bg-white dark:bg-brand-navy px-4 py-2 rounded-xl border-2 border-brand-navy shadow-pop hover:-translate-y-0.5 active:translate-y-0.5 transition-all text-brand-navy dark:text-white">
+              <span>🎲 Surprise Me (Random Mix)</span>
+            </button>
+            <button id="clearInterestsBtn" class="text-xs sm:text-sm font-bold text-gray-500 hover:text-brand-coral transition-colors">
+              Reset Selection
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Animated Personality Blend & Hustle Generator -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Archetype Card -->
+          <div class="bg-gradient-to-br from-white to-brand-softgray dark:from-brand-darkcard dark:to-brand-navy rounded-3xl p-6 sm:p-7 border-3 border-brand-navy dark:border-white/20 shadow-pop-lg relative overflow-hidden">
+            
+            <!-- Live Morphing Blob SVG in Background -->
+            <div class="absolute -right-10 -bottom-10 w-44 h-44 opacity-25 dark:opacity-30 pointer-events-none">
+              <svg viewBox="0 0 200 200" class="w-full h-full animate-blob">
+                <path id="morphingBlobPath" fill="url(#blobGradient)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C86.9,14.6,81.2,29.1,72.4,41.4C63.6,53.7,51.8,63.7,38.3,71.3C24.8,78.9,9.6,84,-5.2,84.9C-20,85.8,-34.5,82.4,-47.4,75C-60.3,67.6,-71.6,56.2,-79.1,42.4C-86.7,28.7,-90.4,12.5,-88.7,-3.3C-87,-19.1,-79.9,-34.5,-69.9,-47.1C-59.8,-59.7,-46.8,-69.5,-32.8,-76.7C-18.7,-83.8,-3.7,-88.3,9.8,-86.6C23.3,-84.9,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+                <defs>
+                  <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop id="blobGradStop1" offset="0%" stop-color="#FF5E5E" />
+                    <stop id="blobGradStop2" offset="100%" stop-color="#7A5AF8" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <div class="relative z-10">
+              <span class="text-xs font-mono font-bold uppercase tracking-wider text-brand-violet dark:text-brand-teal">
+                Your Calculated Archetype
+              </span>
+              <h3 id="archetypeTitle" class="font-display font-extrabold text-2xl sm:text-3xl text-brand-navy dark:text-white mt-1 mb-2">
+                The Algorithmic Gastronomist
+              </h3>
+              <p id="archetypeTagline" class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-6">
+                You blend culinary experimentation, high-speed coding, and compelling storytelling into sensory digital products.
+              </p>
+
+              <!-- Radar Chart (SVG Dynamic) -->
+              <div class="bg-white/80 dark:bg-brand-navy/80 rounded-2xl p-4 border-2 border-brand-navy/15 dark:border-white/10 mb-6">
+                <div class="flex items-center justify-between text-xs font-mono font-bold text-gray-500 mb-2">
+                  <span>POLY-DIMENSION RADAR</span>
+                  <span id="rarityBadge" class="text-brand-coral">Top 3% Rare Blend</span>
+                </div>
+                
+                <div class="w-full flex justify-center items-center py-2">
+                  <svg id="radarSvg" viewBox="0 0 300 260" class="w-full max-w-[260px] h-auto overflow-visible select-none">
+                    <!-- Web Concentric Rings -->
+                    <polygon points="150,30 250,95 212,210 88,210 50,95" fill="none" stroke="currentColor" class="text-gray-300 dark:text-gray-700" stroke-width="1" />
+                    <polygon points="150,65 215,108 190,185 110,185 85,108" fill="none" stroke="currentColor" class="text-gray-300 dark:text-gray-700" stroke-width="1" />
+                    <polygon points="150,100 180,120 167,160 133,160 120,120" fill="none" stroke="currentColor" class="text-gray-300 dark:text-gray-700" stroke-width="1" />
+                    
+                    <!-- Axis lines -->
+                    <line x1="150" y1="130" x2="150" y2="30" stroke="currentColor" class="text-gray-200 dark:text-gray-700" stroke-width="1" stroke-dasharray="2,2" />
+                    <line x1="150" y1="130" x2="250" y2="95" stroke="currentColor" class="text-gray-200 dark:text-gray-700" stroke-width="1" stroke-dasharray="2,2" />
+                    <line x1="150" y1="130" x2="212" y2="210" stroke="currentColor" class="text-gray-200 dark:text-gray-700" stroke-width="1" stroke-dasharray="2,2" />
+                    <line x1="150" y1="130" x2="88" y2="210" stroke="currentColor" class="text-gray-200 dark:text-gray-700" stroke-width="1" stroke-dasharray="2,2" />
+                    <line x1="150" y1="130" x2="50" y2="95" stroke="currentColor" class="text-gray-200 dark:text-gray-700" stroke-width="1" stroke-dasharray="2,2" />
+                    
+                    <!-- Dynamic Radar Polygon -->
+                    <polygon id="radarPolygon" points="150,45 235,105 198,195 105,190 70,105" 
+                             fill="rgba(122, 90, 248, 0.35)" 
+                             stroke="#7A5AF8" 
+                             stroke-width="3" 
+                             class="transition-all duration-700 ease-out" />
+                    
+                    <!-- Radar Vertex Marker Dots -->
+                    <circle id="dotMaker" cx="150" cy="45" r="4.5" fill="#FF5E5E" stroke="#0E1122" stroke-width="1.5" class="transition-all duration-700 ease-out" />
+                    <circle id="dotSocial" cx="235" cy="105" r="4.5" fill="#7A5AF8" stroke="#0E1122" stroke-width="1.5" class="transition-all duration-700 ease-out" />
+                    <circle id="dotHustle" cx="198" cy="195" r="4.5" fill="#FFC837" stroke="#0E1122" stroke-width="1.5" class="transition-all duration-700 ease-out" />
+                    <circle id="dotDepth" cx="105" cy="190" r="4.5" fill="#00D6B2" stroke="#0E1122" stroke-width="1.5" class="transition-all duration-700 ease-out" />
+                    <circle id="dotFlow" cx="70" cy="105" r="4.5" fill="#FF4288" stroke="#0E1122" stroke-width="1.5" class="transition-all duration-700 ease-out" />
+                    
+                    <!-- Labels -->
+                    <text x="150" y="20" text-anchor="middle" class="text-[11px] font-mono font-bold fill-brand-coral">Maker 🛠️</text>
+                    <text x="260" y="100" text-anchor="start" class="text-[11px] font-mono font-bold fill-brand-violet">Social ⚡</text>
+                    <text x="220" y="230" text-anchor="middle" class="text-[11px] font-mono font-bold fill-brand-yellow">Hustle 📈</text>
+                    <text x="75" y="230" text-anchor="middle" class="text-[11px] font-mono font-bold fill-brand-teal">Depth 🧠</text>
+                    <text x="40" y="100" text-anchor="end" class="text-[11px] font-mono font-bold fill-brand-pink">Flow 🎨</text>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Tailored Side Hustle Match Result -->
+              <div class="bg-brand-yellow/20 dark:bg-brand-yellow/10 rounded-2xl p-4 border-2 border-brand-yellow/40">
+                <span class="text-[10px] font-mono uppercase font-black text-brand-navy dark:text-brand-yellow block mb-1">
+                  ✨ Instant Custom Match Recipe
+                </span>
+                <h4 id="matchedHustleTitle" class="font-display font-extrabold text-lg text-brand-navy dark:text-white">
+                  Fermentation AI & Recipe Substack
+                </h4>
+                <p id="matchedHustleDesc" class="text-xs text-gray-700 dark:text-gray-300 mt-1 mb-3">
+                  A high-margin newsletter sharing micro-biology culinary experiments paired with an open-source fermentation tracker app.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span id="matchedHustleFormula" class="text-xs font-mono font-bold text-brand-violet dark:text-brand-teal">
+                    🍳 Cooking + 💻 Code + ✍️ Writing
+                  </span>
+                  <a href="#hustles" class="text-xs font-bold text-brand-coral hover:underline">
+                    View Blueprint →
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 3. SIDE HUSTLE EXPLORER (FLIP CARDS)       -->
+  <!-- ========================================== -->
+  <section id="hustles" class="py-20 md:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title & Filters -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-coral text-white text-xs font-mono font-bold uppercase tracking-wider mb-3">
+            🚀 12+ Tested Blueprints
+          </div>
+          <h2 class="font-display font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight">
+            Side Hustle Explorer
+          </h2>
+          <p class="text-base text-gray-600 dark:text-gray-300 mt-2 max-w-xl">
+            Real ideas combining 2 to 3 unrelated obsessions. Click or hover any card to flip and view the 72-hour launch blueprint.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button data-filter="all" class="hustle-filter-btn active bg-brand-navy text-white dark:bg-white dark:text-brand-navy font-bold text-xs sm:text-sm px-4 py-2 rounded-xl border-2 border-brand-navy dark:border-white shadow-pop">
+            All (12)
+          </button>
+          <button data-filter="solo" class="hustle-filter-btn bg-white dark:bg-brand-darkcard text-brand-navy dark:text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl border-2 border-brand-navy dark:border-white/20 shadow-pop hover:-translate-y-0.5 transition-all">
+            Solo 🧑‍💻
+          </button>
+          <button data-filter="crew" class="hustle-filter-btn bg-white dark:bg-brand-darkcard text-brand-navy dark:text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl border-2 border-brand-navy dark:border-white/20 shadow-pop hover:-translate-y-0.5 transition-all">
+            Needs Crew 👥
+          </button>
+          <button data-filter="weekend" class="hustle-filter-btn bg-white dark:bg-brand-darkcard text-brand-navy dark:text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl border-2 border-brand-navy dark:border-white/20 shadow-pop hover:-translate-y-0.5 transition-all">
+            &lt; 5 hrs/wk ⚡
+          </button>
+        </div>
+      </div>
+
+      <!-- Hustles Grid -->
+      <div id="hustlesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Injected via JavaScript (12 complete cards with 3D flip) -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. NETWORKING FLOOR (JAM LOUNGE)           -->
+  <!-- ========================================== -->
+  <section id="networking" class="py-20 md:py-28 bg-brand-cream/80 dark:bg-brand-darkcard/50 border-t-3 border-brand-navy relative overflow-hidden">
+    <!-- Visual background accent -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-yellow text-brand-navy text-xs font-mono font-bold uppercase tracking-wider mb-3 border border-brand-navy">
+          👋 The Networking Floor
+        </div>
+        <h2 class="font-display font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight mb-4">
+          The Polymath Jam Lounge
+        </h2>
+        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300">
+          No corporate elevator pitches or "humble brags." Just energetic builders sharing what they're tinkering with and who they want to team up with.
+        </p>
+
+        <!-- Status Filter Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+          <button data-member-filter="all" class="member-filter-btn active text-xs font-bold px-3 py-1.5 rounded-full border border-brand-navy bg-brand-navy text-white dark:bg-white dark:text-brand-navy">
+            Everyone (10)
+          </button>
+          <button data-member-filter="cofounder" class="member-filter-btn text-xs font-bold px-3 py-1.5 rounded-full border border-brand-navy bg-white dark:bg-brand-navy text-brand-navy dark:text-white hover:bg-brand-coral hover:text-white transition-colors">
+            🤝 Seeking Co-Founder
+          </button>
+          <button data-member-filter="jam" class="member-filter-btn text-xs font-bold px-3 py-1.5 rounded-full border border-brand-navy bg-white dark:bg-brand-navy text-brand-navy dark:text-white hover:bg-brand-violet hover:text-white transition-colors">
+            🎸 Jam Partner
+          </button>
+          <button data-member-filter="accountability" class="member-filter-btn text-xs font-bold px-3 py-1.5 rounded-full border border-brand-navy bg-white dark:bg-brand-navy text-brand-navy dark:text-white hover:bg-brand-teal hover:text-white transition-colors">
+            🎯 Accountability Buddy
+          </button>
+        </div>
+      </div>
+
+      <!-- Member Cards Grid -->
+      <div id="membersGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+        <!-- 10 members injected via JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. EVENTS & MEETUPS TIMELINE               -->
+  <!-- ========================================== -->
+  <section id="events" class="py-20 md:py-28 bg-white dark:bg-brand-navy border-t-3 border-brand-navy relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-teal text-brand-navy text-xs font-mono font-bold uppercase tracking-wider mb-3 border border-brand-navy">
+            🗓️ Real-Time Calendar
+          </div>
+          <h2 class="font-display font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight">
+            Upcoming Mixers & Jams
+          </h2>
+          <p class="text-base text-gray-600 dark:text-gray-300 mt-2 max-w-xl">
+            Live pitch nights, skill swaps, and rapid prototyping sessions with live countdown timers.
+          </p>
+        </div>
+        
+        <div class="text-xs font-mono font-bold bg-brand-cream dark:bg-brand-darkcard px-4 py-2 rounded-xl border-2 border-brand-navy dark:border-white/20 shadow-pop">
+          ⚡ All events free for Collective members
+        </div>
+      </div>
+
+      <!-- Events List -->
+      <div id="eventsList" class="space-y-6">
+        <!-- 5 Events injected via JavaScript with countdown logic -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. IDEA JAM BOARD (DRAGGABLE STICKY NOTES) -->
+  <!-- ========================================== -->
+  <section id="board" class="py-20 md:py-28 bg-brand-softgray/80 dark:bg-brand-navy/90 border-t-3 border-brand-navy relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-pink text-white text-xs font-mono font-bold uppercase tracking-wider mb-2">
+            📌 Collective Brain Dump
+          </div>
+          <h2 class="font-display font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight">
+            The Idea Jam Board
+          </h2>
+          <p class="text-base text-gray-600 dark:text-gray-300 mt-1">
+            Drag sticky notes anywhere on the board! Upvote brilliant weirdness or pin your own.
+          </p>
+        </div>
+
+        <button id="openNewIdeaModalBtn" class="inline-flex items-center gap-2 bg-brand-yellow hover:bg-amber-300 text-brand-navy font-extrabold text-sm sm:text-base px-6 py-3.5 rounded-2xl border-2 border-brand-navy shadow-pop-lg hover:-translate-y-0.5 active:translate-y-0.5 transition-all">
+          <span>+ Post A Wild Idea</span>
+          <span>🎉</span>
+        </button>
+      </div>
+
+      <!-- Interactive Corkboard Canvas -->
+      <div id="corkboardContainer" class="relative w-full h-[580px] sm:h-[620px] rounded-3xl bg-amber-50/70 dark:bg-brand-darkcard border-3 border-brand-navy dark:border-white/20 shadow-pop-lg overflow-hidden p-6 select-none">
+        
+        <!-- Subtle corkboard pin indicator -->
+        <div class="absolute top-4 right-4 text-xs font-mono font-bold text-gray-400 pointer-events-none">
+          🖐️ Click & Drag to reposition • Double-click to like
+        </div>
+
+        <!-- Sticky Notes dynamically rendered here -->
+        <div id="stickyNotesBoard" class="relative w-full h-full">
+          <!-- Injected via JavaScript -->
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. SUCCESS STORIES (POLYMATHS IN THE WILD) -->
+  <!-- ========================================== -->
+  <section id="stories" class="py-20 md:py-28 bg-white dark:bg-brand-navy border-t-3 border-brand-navy relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-400 text-brand-navy text-xs font-mono font-bold uppercase tracking-wider mb-3 border border-brand-navy">
+          ⭐ Hall of Polymaths
+        </div>
+        <h2 class="font-display font-black text-3xl sm:text-5xl text-brand-navy dark:text-white tracking-tight mb-4">
+          Polymaths in the Wild
+        </h2>
+        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300">
+          Proof that refusing to pick one lane doesn't just work — it creates untouchable unfair advantages.
+        </p>
+      </div>
+
+      <!-- Carousel Container -->
+      <div class="relative max-w-4xl mx-auto">
+        
+        <div id="carouselWrapper" class="overflow-hidden rounded-3xl border-3 border-brand-navy dark:border-white/20 shadow-pop-lg bg-brand-cream dark:bg-brand-darkcard">
+          <div id="carouselTrack" class="flex transition-transform duration-500 ease-out">
+            <!-- 4 Story Slides injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="flex items-center justify-between mt-6">
+          <button id="carouselPrevBtn" aria-label="Previous Story" class="p-3 rounded-2xl border-2 border-brand-navy dark:border-white/20 bg-white dark:bg-brand-darkcard shadow-pop hover:scale-105 active:scale-95 transition-all text-xl">
+            ←
+          </button>
+          
+          <div id="carouselDots" class="flex gap-2">
+            <!-- Dots injected via JS -->
+          </div>
+
+          <button id="carouselNextBtn" aria-label="Next Story" class="p-3 rounded-2xl border-2 border-brand-navy dark:border-white/20 bg-white dark:bg-brand-darkcard shadow-pop hover:scale-105 active:scale-95 transition-all text-xl">
+            →
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. JOIN CTA + FOOTER                       -->
+  <!-- ========================================== -->
+  <section id="join" class="py-24 bg-gradient-to-br from-brand-coral via-brand-violet to-brand-teal text-white border-t-3 border-brand-navy relative overflow-hidden">
+    
+    <!-- Background Sparkles -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <div class="inline-block p-4 bg-white/20 backdrop-blur-md rounded-3xl border-2 border-white/40 mb-6 text-4xl animate-bounce">
+        🚀
+      </div>
+
+      <h2 class="font-display font-black text-4xl sm:text-6xl tracking-tight mb-6 text-white drop-shadow-md">
+        Ready to stop apologising for having 47 open tabs?
+      </h2>
+      
+      <p class="text-lg sm:text-xl text-white/90 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
+        Join 14,280+ multi-passionate builders. Weekly side hustle recipes, invitations to secret jam sessions, and direct access to the co-founder floor.
+      </p>
+
+      <!-- Email Signup Form Container -->
+      <div id="signupContainer" class="max-w-md mx-auto">
+        <form id="signupForm" class="flex flex-col sm:flex-row gap-3">
+          <input 
+            type="email" 
+            id="userEmailInput" 
+            required 
+            placeholder="Enter your email (e.g. maya@polymath.io)" 
+            class="flex-1 px-5 py-4 rounded-2xl border-2 border-brand-navy bg-white text-brand-navy placeholder:text-gray-400 font-bold focus:outline-none focus:ring-4 focus:ring-brand-yellow shadow-pop"
+          >
+          <button 
+            type="submit" 
+            class="px-8 py-4 rounded-2xl bg-brand-yellow hover:bg-amber-300 text-brand-navy font-black text-lg border-2 border-brand-navy shadow-pop hover:-translate-y-0.5 active:translate-y-0.5 transition-all whitespace-nowrap"
+          >
+            Join Free 🎉
+          </button>
+        </form>
+
+        <p class="text-xs text-white/80 font-medium mt-3">
+          No spam, ever. Unsubscribe anytime with one click.
+        </p>
+      </div>
+
+      <!-- Celebratory Success Badge (Hidden until signup) -->
+      <div id="signupSuccessState" class="hidden max-w-md mx-auto bg-white text-brand-navy rounded-3xl p-6 border-3 border-brand-navy shadow-pop-lg animate-pulse-soft">
+        <div class="text-4xl mb-2">🎉 VIP ACCESS UNLOCKED!</div>
+        <h4 class="font-display font-black text-2xl">Welcome to the Collective</h4>
+        <p class="text-sm text-gray-600 mt-1 mb-4">
+          You are officially member <strong id="assignedMemberId" class="text-brand-coral font-mono">#14,281</strong>! Check your inbox for the secret Discord key & mixer pass.
+        </p>
+        <button id="resetSignupBtn" class="text-xs font-bold text-brand-violet hover:underline">
+          Register another email →
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-navy text-white py-12 border-t-3 border-brand-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/10">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-brand-coral rounded-xl flex items-center justify-center text-white font-black text-xl border-2 border-white shadow-pop">
+            ⚡
+          </div>
+          <div>
+            <span class="font-display font-extrabold text-xl tracking-tight">POLYMATH COLLECTIVE</span>
+            <span class="block text-xs font-mono text-brand-yellow">Build things. Collect hobbies. Meet your crew.</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-bold text-gray-300">
+          <a href="#mixer" class="hover:text-brand-yellow transition-colors">Mixer</a>
+          <a href="#hustles" class="hover:text-brand-coral transition-colors">Hustle Explorer</a>
+          <a href="#networking" class="hover:text-brand-teal transition-colors">Jam Lounge</a>
+          <a href="#events" class="hover:text-brand-violet transition-colors">Events</a>
+          <a href="#board" class="hover:text-brand-pink transition-colors">Idea Board</a>
+        </div>
+
+        <div class="flex items-center gap-3 text-lg">
+          <a href="#" aria-label="Twitter/X" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-brand-coral flex items-center justify-center transition-colors">𝕏</a>
+          <a href="#" aria-label="Discord" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-brand-violet flex items-center justify-center transition-colors">👾</a>
+          <a href="#" aria-label="GitHub" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-brand-teal flex items-center justify-center transition-colors">🐙</a>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 font-mono gap-4">
+        <div>
+          © 2026 Polymath Collective. Built for intellectual omnivores.
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-brand-teal">● 60 FPS Canvas Physics</span>
+          <span>•</span>
+          <span class="text-brand-yellow">● Pure Web Audio</span>
+          <span>•</span>
+          <a href="#top" class="text-brand-coral hover:underline">Back to top ↑</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL: ADD STICKY NOTE                     -->
+  <!-- ========================================== -->
+  <div id="stickyModal" class="fixed inset-0 z-50 bg-brand-navy/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-brand-darkcard rounded-3xl border-3 border-brand-navy dark:border-white/20 shadow-pop-lg max-w-lg w-full p-6 sm:p-8 relative animate-scale-up">
+      
+      <button id="closeStickyModalBtn" aria-label="Close Modal" class="absolute top-5 right-5 text-gray-400 hover:text-brand-navy dark:hover:text-white font-bold text-xl p-1">
+        ✕
+      </button>
+
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-2xl">📌</span>
+        <h3 class="font-display font-black text-2xl text-brand-navy dark:text-white">Pin a Wild Idea</h3>
+      </div>
+
+      <form id="newIdeaForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Sticky Note Color</label>
+          <div class="flex gap-3">
+            <label class="cursor-pointer">
+              <input type="radio" name="noteColor" value="yellow" checked class="sr-only peer">
+              <div class="w-9 h-9 rounded-xl bg-brand-yellow border-2 border-brand-navy peer-checked:ring-4 peer-checked:ring-brand-coral"></div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="noteColor" value="coral" class="sr-only peer">
+              <div class="w-9 h-9 rounded-xl bg-brand-coral border-2 border-brand-navy peer-checked:ring-4 peer-checked:ring-brand-yellow"></div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="noteColor" value="mint" class="sr-only peer">
+              <div class="w-9 h-9 rounded-xl bg-emerald-300 border-2 border-brand-navy peer-checked:ring-4 peer-checked:ring-brand-violet"></div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="noteColor" value="cyan" class="sr-only peer">
+              <div class="w-9 h-9 rounded-xl bg-cyan-200 border-2 border-brand-navy peer-checked:ring-4 peer-checked:ring-brand-coral"></div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="noteColor" value="lavender" class="sr-only peer">
+              <div class="w-9 h-9 rounded-xl bg-purple-200 border-2 border-brand-navy peer-checked:ring-4 peer-checked:ring-brand-teal"></div>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Headline / Concept</label>
+          <input type="text" id="newIdeaTitle" required placeholder="e.g. Duolingo for Specialty Coffee Roasting" class="w-full px-4 py-2.5 rounded-xl border-2 border-brand-navy bg-brand-cream/50 dark:bg-brand-navy text-brand-navy dark:text-white font-bold focus:outline-none focus:ring-2 focus:ring-brand-coral">
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Quick Pitch / Why it works</label>
+          <textarea id="newIdeaBody" rows="3" required placeholder="Combine daily gamified tasting drills with a monthly bean subscription..." class="w-full px-4 py-2.5 rounded-xl border-2 border-brand-navy bg-brand-cream/50 dark:bg-brand-navy text-brand-navy dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-brand-coral"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-mono font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Your Name / Handle</label>
+            <input type="text" id="newIdeaAuthor" required placeholder="e.g. Alex M. @alexcodes" class="w-full px-4 py-2 rounded-xl border-2 border-brand-navy bg-brand-cream/50 dark:bg-brand-navy text-brand-navy dark:text-white font-bold text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-mono font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Category Tag</label>
+            <input type="text" id="newIdeaTag" required placeholder="e.g. Coffee + SaaS" class="w-full px-4 py-2 rounded-xl border-2 border-brand-navy bg-brand-cream/50 dark:bg-brand-navy text-brand-navy dark:text-white font-bold text-sm">
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3.5 bg-brand-coral hover:bg-rose-500 text-white font-black text-base rounded-2xl border-2 border-brand-navy shadow-pop hover:-translate-y-0.5 active:translate-y-0.5 transition-all">
+            📌 Stick It to the Board!
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: MEMBER PROFILE / JAM CARD           -->
+  <!-- ========================================== -->
+  <div id="memberModal" class="fixed inset-0 z-50 bg-brand-navy/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-brand-darkcard rounded-3xl border-3 border-brand-navy dark:border-white/20 shadow-pop-lg max-w-lg w-full p-6 sm:p-8 relative">
+      <button id="closeMemberModalBtn" aria-label="Close Member Profile" class="absolute top-5 right-5 text-gray-400 hover:text-brand-navy dark:hover:text-white font-bold text-xl p-1">
+        ✕
+      </button>
+
+      <div id="memberModalContent">
+        <!-- Rendered dynamically on member click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT APPLICATION CORE                -->
+  <!-- ========================================== -->
+  <script>
+    /* -------------------------------------------------------------
+     * 0. ZERO-DEPENDENCY CONFETTI FALLBACK ENGINE
+     * -----------------------------------------------------------*/
+    if (typeof window.confetti !== 'function') {
+      window.confetti = function(opts = {}) {
+        const particleCount = opts.particleCount || 40;
+        const colors = opts.colors || ['#FF5E5E', '#FFC837', '#7A5AF8', '#00D6B2', '#FF4288'];
+        const originX = opts.origin && opts.origin.x !== undefined ? opts.origin.x * window.innerWidth : window.innerWidth * 0.5;
+        const originY = opts.origin && opts.origin.y !== undefined ? opts.origin.y * window.innerHeight : window.innerHeight * 0.6;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const el = document.createElement('div');
+          const size = 6 + Math.random() * 8;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          el.style.position = 'fixed';
+          el.style.left = `${originX}px`;
+          el.style.top = `${originY}px`;
+          el.style.width = `${size}px`;
+          el.style.height = `${size * (Math.random() > 0.5 ? 1 : 1.6)}px`;
+          el.style.backgroundColor = color;
+          el.style.borderRadius = Math.random() > 0.4 ? '2px' : '50%';
+          el.style.pointerEvents = 'none';
+          el.style.zIndex = '99999';
+          el.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+          el.style.transition = 'transform 1.1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.1s ease-out';
+          document.body.appendChild(el);
+
+          const angle = Math.random() * Math.PI * 2;
+          const velocity = 80 + Math.random() * 220;
+          const destX = Math.cos(angle) * velocity;
+          const destY = Math.sin(angle) * velocity + 100;
+
+          requestAnimationFrame(() => {
+            el.style.transform = `translate(${destX}px, ${destY}px) rotate(${Math.random() * 720}deg)`;
+            el.style.opacity = '0';
+          });
+
+          setTimeout(() => el.remove(), 1200);
+        }
+      };
+    }
+
+    /* -------------------------------------------------------------
+     * 1. AUDIO SYNTHESIS ENGINE (Pure Web Audio API - Zero Assets)
+     * -----------------------------------------------------------*/
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+      init() {
+        if (!this.ctx) {
+          try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+              this.ctx = new AudioContext();
+            }
+          } catch (e) {
+            this.ctx = null;
+          }
+        }
+      }
+      playTone(freq, type = 'sine', duration = 0.15, vol = 0.12) {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        try {
+          if (this.ctx.state === 'suspended') {
+            this.ctx.resume().catch(() => {});
+          }
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          gain.gain.setValueAtTime(vol, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {}
+      }
+      pop() {
+        this.playTone(380 + Math.random() * 200, 'triangle', 0.1, 0.14);
+      }
+      chime() {
+        if (!this.enabled) return;
+        this.playTone(523.25, 'sine', 0.2, 0.1); // C5
+        setTimeout(() => this.playTone(659.25, 'sine', 0.25, 0.12), 80); // E5
+        setTimeout(() => this.playTone(783.99, 'sine', 0.35, 0.14), 160); // G5
+      }
+      waveChime() {
+        if (!this.enabled) return;
+        this.playTone(440, 'triangle', 0.15, 0.12);
+        setTimeout(() => this.playTone(554.37, 'sine', 0.2, 0.14), 60);
+        setTimeout(() => this.playTone(659.25, 'sine', 0.3, 0.16), 120);
+      }
+      fanfare() {
+        if (!this.enabled) return;
+        const notes = [440, 554, 659, 880];
+        notes.forEach((f, idx) => {
+          setTimeout(() => this.playTone(f, 'triangle', 0.35, 0.15), idx * 70);
+        });
+      }
+    }
+    const sound = new SoundEngine();
+
+    /* -------------------------------------------------------------
+     * 2. THEME & SOUND TOGGLES
+     * -----------------------------------------------------------*/
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const soundToggleBtn = document.getElementById('soundToggle');
+    const soundIcon = document.getElementById('soundIcon');
+
+    // Theme initialization
+    const savedTheme = localStorage.getItem('polymath_theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeIcon.textContent = '☀️';
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeIcon.textContent = '🌙';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('polymath_theme', isDark ? 'dark' : 'light');
+      sound.pop();
+      showToast(isDark ? 'Cosmic Dark Mode enabled 🌌' : 'Sunlit Mode enabled ☀️');
+    });
+
+    soundToggleBtn.addEventListener('click', () => {
+      sound.enabled = !sound.enabled;
+      soundIcon.textContent = sound.enabled ? '🔊' : '🔇';
+      soundToggleBtn.classList.toggle('opacity-60', !sound.enabled);
+      if (sound.enabled) {
+        sound.chime();
+        showToast('Sound effects ON 🎶');
+      } else {
+        showToast('Sound effects muted 🔇');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      sound.pop();
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    /* -------------------------------------------------------------
+     * 3. TOAST NOTIFICATION HELPER
+     * -----------------------------------------------------------*/
+    function showToast(message, emoji = '⚡') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'bg-brand-navy text-white dark:bg-white dark:text-brand-navy px-4 py-3 rounded-2xl border-2 border-brand-coral shadow-pop font-bold text-sm flex items-center gap-2 transform translate-y-4 opacity-0 transition-all duration-300 pointer-events-auto';
+      toast.innerHTML = `<span>${emoji}</span><span>${message}</span>`;
+      container.appendChild(toast);
+      
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      });
+      setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    /* -------------------------------------------------------------
+     * 4. CUSTOM CURSOR
+     * -----------------------------------------------------------*/
+    const cursorRing = document.getElementById('cursorRing');
+    const cursorDot = document.getElementById('cursorDot');
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (cursorDot) {
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      }
+    });
+
+    function animateCursor() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      if (cursorRing) {
+        cursorRing.style.left = `${ringX}px`;
+        cursorRing.style.top = `${ringY}px`;
+      }
+      requestAnimationFrame(animateCursor);
+    }
+    if (cursorRing && window.matchMedia('(pointer: fine)').matches) {
+      animateCursor();
+      document.querySelectorAll('a, button, input, .sticky-note, .hustle-card').forEach(el => {
+        el.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-hover'));
+      });
+    }
+
+    /* -------------------------------------------------------------
+     * 5. HERO 2D CANVAS PHYSICS SIMULATOR (Colliding Bubbles)
+     * -----------------------------------------------------------*/
+    const canvas = document.getElementById('bubbleCanvas');
+    const ctx = canvas.getContext('2d');
+    const poppedCountSpan = document.getElementById('poppedCount');
+    let poppedCount = 0;
+
+    const rawBubbleData = [
+      { label: 'Coding 💻', color: '#7A5AF8', textCol: '#FFFFFF', radius: 46 },
+      { label: 'Cooking 🍳', color: '#FF5E5E', textCol: '#FFFFFF', radius: 44 },
+      { label: 'Music 🎵', color: '#FFC837', textCol: '#0E1122', radius: 40 },
+      { label: 'Writing ✍️', color: '#00D6B2', textCol: '#0E1122', radius: 42 },
+      { label: 'Philosophy 🏛️', color: '#FF4288', textCol: '#FFFFFF', radius: 48 },
+      { label: 'Fitness 🏋️', color: '#7A5AF8', textCol: '#FFFFFF', radius: 42 },
+      { label: 'Finance 📈', color: '#00D6B2', textCol: '#0E1122', radius: 40 },
+      { label: 'Robotics 🤖', color: '#FF5E5E', textCol: '#FFFFFF', radius: 45 },
+      { label: '3D Art 🎨', color: '#FFC837', textCol: '#0E1122', radius: 43 },
+      { label: 'Coffee ☕', color: '#965E42', textCol: '#FFFFFF', radius: 38 },
+      { label: 'Filmmaking 🎬', color: '#FF4288', textCol: '#FFFFFF', radius: 46 },
+      { label: 'Psychology 🧠', color: '#7A5AF8', textCol: '#FFFFFF', radius: 44 },
+    ];
+
+    let bubbles = [];
+    let canvasMouse = { x: -999, y: -999, active: false };
+
+    function initCanvasDimensions() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width || 800;
+      const h = rect.height || 360;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.scale(dpr, dpr);
+      canvas.logicalWidth = w;
+      canvas.logicalHeight = h;
+
+      // Adjust bubble sizes dynamically based on screen width
+      const scaleMultiplier = w < 640 ? 0.72 : 1.0;
+      bubbles.forEach(b => {
+        b.radius = b.originalRadius * scaleMultiplier;
+      });
+    }
+
+    function spawnBubbles() {
+      const w = canvas.logicalWidth || 800;
+      const h = canvas.logicalHeight || 360;
+      const scaleMultiplier = w < 640 ? 0.72 : 1.0;
+      bubbles = rawBubbleData.map((item, idx) => {
+        const rad = item.radius * scaleMultiplier;
+        const x = rad + 20 + Math.random() * Math.max(20, w - (rad * 2 + 40));
+        const y = rad + 20 + Math.random() * Math.max(20, h - (rad * 2 + 40));
+        return {
+          ...item,
+          id: idx,
+          x: x,
+          y: y,
+          vx: (Math.random() - 0.5) * 1.4,
+          vy: (Math.random() - 0.5) * 1.4,
+          originalRadius: item.radius,
+          radius: rad,
+          scale: 1,
+          popped: false,
+        };
+      });
+    }
+
+    initCanvasDimensions();
+    spawnBubbles();
+
+    window.addEventListener('resize', () => {
+      initCanvasDimensions();
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      canvasMouse.x = e.clientX - rect.left;
+      canvasMouse.y = e.clientY - rect.top;
+      canvasMouse.active = true;
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+      canvasMouse.active = false;
+    });
+
+    // Particle bursts on bubble pop
+    let canvasParticles = [];
+
+    function triggerBubblePop(b, cx, cy) {
+      b.popped = true;
+      poppedCount++;
+      poppedCountSpan.textContent = poppedCount;
+      sound.pop();
+
+      // Spawn 16 explosion sparks
+      for (let i = 0; i < 16; i++) {
+        const angle = (Math.PI * 2 * i) / 16 + (Math.random() - 0.5);
+        const speed = 2 + Math.random() * 4;
+        canvasParticles.push({
+          x: cx,
+          y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          color: b.color,
+          radius: 3 + Math.random() * 3,
+          alpha: 1,
+          life: 30 + Math.random() * 15,
+        });
+      }
+
+      // Re-spawn bubble after 3 seconds
+      setTimeout(() => {
+        b.popped = false;
+        b.scale = 0.1;
+        b.x = 50 + Math.random() * (canvas.logicalWidth - 100);
+        b.y = 50 + Math.random() * (canvas.logicalHeight - 100);
+        b.vx = (Math.random() - 0.5) * 1.5;
+        b.vy = (Math.random() - 0.5) * 1.5;
+      }, 2800);
+    }
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      for (let i = bubbles.length - 1; i >= 0; i--) {
+        const b = bubbles[i];
+        if (b.popped) continue;
+        const dist = Math.hypot(clickX - b.x, clickY - b.y);
+        if (dist <= b.radius) {
+          triggerBubblePop(b, b.x, b.y);
+          showToast(`Popped "${b.label}"! Pop them all!`, '💥');
+          break;
+        }
+      }
+    });
+
+    document.getElementById('resetBubblesBtn').addEventListener('click', () => {
+      spawnBubbles();
+      poppedCount = 0;
+      poppedCountSpan.textContent = 0;
+      sound.fanfare();
+      showToast('All bubbles respawned!', '✨');
+    });
+
+    // Physics Animation Loop
+    function updateBubblePhysics() {
+      ctx.clearRect(0, 0, canvas.logicalWidth, canvas.logicalHeight);
+
+      // Render/update particles
+      for (let i = canvasParticles.length - 1; i >= 0; i--) {
+        const p = canvasParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.08; // gravity
+        p.alpha -= 1 / p.life;
+        if (p.alpha <= 0) {
+          canvasParticles.splice(i, 1);
+          continue;
+        }
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Update bubbles
+      for (let i = 0; i < bubbles.length; i++) {
+        const b = bubbles[i];
+        if (b.popped) continue;
+
+        // Smooth grow in if reviving
+        if (b.scale < 1) {
+          b.scale += 0.05;
+          if (b.scale > 1) b.scale = 1;
+        }
+
+        b.x += b.vx;
+        b.y += b.vy;
+
+        // Boundary bounce
+        if (b.x - b.radius < 5) {
+          b.x = 5 + b.radius;
+          b.vx *= -1;
+        } else if (b.x + b.radius > canvas.logicalWidth - 5) {
+          b.x = canvas.logicalWidth - 5 - b.radius;
+          b.vx *= -1;
+        }
+        if (b.y - b.radius < 5) {
+          b.y = 5 + b.radius;
+          b.vy *= -1;
+        } else if (b.y + b.radius > canvas.logicalHeight - 5) {
+          b.y = canvas.logicalHeight - 5 - b.radius;
+          b.vy *= -1;
+        }
+
+        // Cursor Repulsion & Attraction
+        if (canvasMouse.active) {
+          const dx = b.x - canvasMouse.x;
+          const dy = b.y - canvasMouse.y;
+          const dist = Math.hypot(dx, dy);
+          const repelRadius = 110;
+          if (dist < repelRadius && dist > 0) {
+            const force = (repelRadius - dist) / repelRadius;
+            const nx = dx / dist;
+            const ny = dy / dist;
+            b.vx += nx * force * 0.7;
+            b.vy += ny * force * 0.7;
+          }
+        }
+
+        // Bubble to bubble gentle elastic collisions
+        for (let j = i + 1; j < bubbles.length; j++) {
+          const b2 = bubbles[j];
+          if (b2.popped) continue;
+          const dx = b2.x - b.x;
+          const dy = b2.y - b.y;
+          const dist = Math.hypot(dx, dy);
+          const minDist = b.radius + b2.radius;
+          if (dist < minDist && dist > 0) {
+            const overlap = (minDist - dist) * 0.5;
+            const nx = dx / dist;
+            const ny = dy / dist;
+            b.x -= nx * overlap;
+            b.y -= ny * overlap;
+            b2.x += nx * overlap;
+            b2.y += ny * overlap;
+            // Dampen speeds
+            const kx = b.vx - b2.vx;
+            const ky = b.vy - b2.vy;
+            const p = 2 * (nx * kx + ny * ky) / 2;
+            b.vx -= p * nx * 0.8;
+            b.vy -= p * ny * 0.8;
+            b2.vx += p * nx * 0.8;
+            b2.vy += p * ny * 0.8;
+          }
+        }
+
+        // Speed limit
+        const speed = Math.hypot(b.vx, b.vy);
+        const maxSpeed = 3.2;
+        if (speed > maxSpeed) {
+          b.vx = (b.vx / speed) * maxSpeed;
+          b.vy = (b.vy / speed) * maxSpeed;
+        }
+
+        // Draw Bubble
+        const currentR = b.radius * b.scale;
+        ctx.save();
+        
+        // Neo-Brutalist Drop Shadow
+        ctx.fillStyle = '#0E1122';
+        ctx.beginPath();
+        ctx.arc(b.x + 4, b.y + 4, currentR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Bubble Body
+        ctx.fillStyle = b.color;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, currentR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Bubble Border
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = '#0E1122';
+        ctx.stroke();
+
+        // Gloss highlight
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.beginPath();
+        ctx.arc(b.x - currentR * 0.35, b.y - currentR * 0.35, currentR * 0.28, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Label
+        ctx.fillStyle = b.textCol;
+        ctx.font = 'bold 12px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(b.label, b.x, b.y + 1);
+
+        ctx.restore();
+      }
+
+      requestAnimationFrame(updateBubblePhysics);
+    }
+    requestAnimationFrame(updateBubblePhysics);
+
+    /* -------------------------------------------------------------
+     * 6. INTEREST MIXER (THE STANDOUT FEATURE DATA & LOGIC)
+     * -----------------------------------------------------------*/
+    const ALL_INTERESTS = [
+      { id: 'tech', label: 'Tech & Code', icon: '💻', color: 'bg-violet-100 text-violet-800 border-violet-800', vectors: { maker: 95, social: 40, hustle: 90, depth: 85, flow: 60 } },
+      { id: 'cooking', label: 'Culinary & Ferment', icon: '🍳', color: 'bg-rose-100 text-rose-800 border-rose-800', vectors: { maker: 90, social: 75, hustle: 70, depth: 65, flow: 85 } },
+      { id: 'writing', label: 'Writing & Substack', icon: '✍️', color: 'bg-emerald-100 text-emerald-800 border-emerald-800', vectors: { maker: 60, social: 60, hustle: 80, depth: 95, flow: 90 } },
+      { id: 'music', label: 'Music & Synths', icon: '🎵', color: 'bg-amber-100 text-amber-800 border-amber-800', vectors: { maker: 85, social: 80, hustle: 60, depth: 75, flow: 95 } },
+      { id: 'fitness', label: 'Fitness & Biohacking', icon: '🏋️', color: 'bg-blue-100 text-blue-800 border-blue-800', vectors: { maker: 50, social: 70, hustle: 85, depth: 70, flow: 65 } },
+      { id: 'philosophy', label: 'Philosophy & Ethics', icon: '🏛️', color: 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-800', vectors: { maker: 40, social: 65, hustle: 50, depth: 100, flow: 80 } },
+      { id: 'finance', label: 'Finance & Investing', icon: '📈', color: 'bg-green-100 text-green-800 border-green-800', vectors: { maker: 45, social: 55, hustle: 100, depth: 90, flow: 40 } },
+      { id: 'design', label: '3D & Visual Art', icon: '🎨', color: 'bg-pink-100 text-pink-800 border-pink-800', vectors: { maker: 90, social: 50, hustle: 75, depth: 60, flow: 100 } },
+      { id: 'hardware', label: 'Hardware & Robotics', icon: '🤖', color: 'bg-cyan-100 text-cyan-800 border-cyan-800', vectors: { maker: 100, social: 45, hustle: 75, depth: 85, flow: 60 } },
+      { id: 'coffee', label: 'Specialty Coffee', icon: '☕', color: 'bg-amber-200 text-amber-900 border-amber-900', vectors: { maker: 80, social: 85, hustle: 70, depth: 65, flow: 75 } },
+      { id: 'film', label: 'Filmmaking & Video', icon: '🎬', color: 'bg-purple-100 text-purple-800 border-purple-800', vectors: { maker: 85, social: 90, hustle: 80, depth: 70, flow: 95 } },
+      { id: 'psychology', label: 'Psychology & Mind', icon: '🧠', color: 'bg-indigo-100 text-indigo-800 border-indigo-800', vectors: { maker: 40, social: 90, hustle: 65, depth: 95, flow: 70 } },
+      { id: 'gaming', label: 'Game Design & Lore', icon: '🕹️', color: 'bg-red-100 text-red-800 border-red-800', vectors: { maker: 90, social: 70, hustle: 70, depth: 80, flow: 90 } },
+      { id: 'botany', label: 'Urban Foraging & Flora', icon: '🌿', color: 'bg-teal-100 text-teal-800 border-teal-800', vectors: { maker: 75, social: 60, hustle: 55, depth: 80, flow: 85 } },
+      { id: 'comedy', label: 'Standup & Satire', icon: '🎭', color: 'bg-yellow-100 text-yellow-900 border-yellow-900', vectors: { maker: 60, social: 100, hustle: 75, depth: 70, flow: 90 } },
+      { id: 'community', label: 'Hosting & Curation', icon: '🎪', color: 'bg-orange-100 text-orange-900 border-orange-900', vectors: { maker: 50, social: 100, hustle: 85, depth: 60, flow: 80 } },
+    ];
+
+    let selectedInterests = ['tech', 'cooking', 'writing']; // default 3
+
+    const archetypePresets = {
+      'tech+cooking+writing': {
+        title: 'The Algorithmic Gastronomist',
+        tagline: 'You translate sensory culinary experiments into high-traffic digital publications and recipe SaaS tools.',
+        rarity: 'Top 2% Rare Hybrid',
+        hustleTitle: 'Fermentation AI & Recipe Substack',
+        hustleDesc: 'A high-margin newsletter sharing micro-biology culinary experiments paired with an open-source fermentation tracker app.',
+        hustleFormula: '🍳 Cooking + 💻 Code + ✍️ Writing'
+      },
+      'tech+music+design': {
+        title: 'The Kinetic Audio Architect',
+        tagline: 'You fuse modular synth circuitry, responsive web visuals, and spatial acoustic design.',
+        rarity: 'Top 1% Super Hybrid',
+        hustleTitle: 'Interactive Web Synths & Preset Club',
+        hustleDesc: 'Web-based generative soundscapes licensed to meditation apps, paired with tactile DIY Eurorack faceplates.',
+        hustleFormula: '🎵 Music + 💻 Tech + 🎨 Design'
+      },
+      'finance+fitness+philosophy': {
+        title: 'The Stoic Wealth Athlete',
+        tagline: 'You treat bodily vigor, cognitive clarity, and asymmetric capital allocation as one unified discipline.',
+        rarity: 'Top 4% Rare Hybrid',
+        hustleTitle: 'Executive Mental Resilience Sprints',
+        hustleDesc: 'Outdoor physical endurance sessions combined with financial risk analysis workshops for founder cohorts.',
+        hustleFormula: '🏋️ Fitness + 📈 Finance + 🏛️ Philosophy'
+      },
+      'comedy+finance+writing': {
+        title: 'The Satirical Arbitrageur',
+        tagline: 'You pierce through corporate absurdity with sharp analytical teeth and unsparing wit.',
+        rarity: 'Top 3% Rare Hybrid',
+        hustleTitle: 'Fintech Comedy Roasts & Executive Satire',
+        hustleDesc: 'Viral financial comedy reels paired with high-ticket corporate workshop roasts teaching honest risk awareness.',
+        hustleFormula: '🎭 Comedy + 📈 Finance + ✍️ Writing'
+      },
+      'coffee+hardware+community': {
+        title: 'The Kinetic Café Tinkerer',
+        tagline: 'You build custom mechanical gadgets to create warm, magnetic physical gathering spaces.',
+        rarity: 'Top 2% Rare Hybrid',
+        hustleTitle: 'Pop-Up IoT Acoustic Espresso Lounge',
+        hustleDesc: 'Weekend pop-up coffee bars with Arduino-controlled pressure profiles and live vinyl listening sessions.',
+        hustleFormula: '☕ Coffee + 🤖 Hardware + 🎪 Community'
+      }
+    };
+
+    function renderInterestChips() {
+      const container = document.getElementById('interestChipsContainer');
+      container.innerHTML = '';
+
+      ALL_INTERESTS.forEach(item => {
+        const isSelected = selectedInterests.includes(item.id);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `interest-chip px-3.5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm border-2 transition-all flex items-center gap-2 ${
+          isSelected 
+            ? 'bg-brand-coral text-white border-brand-navy shadow-pop-coral -translate-y-0.5' 
+            : 'bg-white dark:bg-brand-navy text-brand-navy dark:text-gray-200 border-brand-navy/30 dark:border-white/20 hover:border-brand-navy hover:-translate-y-0.5 shadow-sm'
+        }`;
+        btn.innerHTML = `<span>${item.icon}</span><span>${item.label}</span>${isSelected ? ' <span class="text-xs">✓</span>' : ''}`;
+        
+        btn.addEventListener('click', () => {
+          toggleInterest(item.id);
+        });
+        container.appendChild(btn);
+      });
+
+      document.getElementById('interestSelectionCounter').textContent = 
+        `${selectedInterests.length} Selected (3-5 required)`;
+    }
+
+    function toggleInterest(id) {
+      if (selectedInterests.includes(id)) {
+        if (selectedInterests.length <= 3) {
+          showToast('Keep at least 3 interests to maintain your blend!', '⚠️');
+          sound.pop();
+          return;
+        }
+        selectedInterests = selectedInterests.filter(x => x !== id);
+      } else {
+        if (selectedInterests.length >= 5) {
+          showToast('Maximum 5 interests chosen! Deselect one to swap.', '⚠️');
+          sound.pop();
+          return;
+        }
+        selectedInterests.push(id);
+      }
+      sound.chime();
+      renderInterestChips();
+      calculatePersonalityBlend();
+    }
+
+    function calculatePersonalityBlend() {
+      // Calculate average radar vectors
+      let total = { maker: 0, social: 0, hustle: 0, depth: 0, flow: 0 };
+      selectedInterests.forEach(id => {
+        const data = ALL_INTERESTS.find(x => x.id === id);
+        if (data) {
+          total.maker += data.vectors.maker;
+          total.social += data.vectors.social;
+          total.hustle += data.vectors.hustle;
+          total.depth += data.vectors.depth;
+          total.flow += data.vectors.flow;
+        }
+      });
+      const count = selectedInterests.length;
+      const avg = {
+        maker: total.maker / count,
+        social: total.social / count,
+        hustle: total.hustle / count,
+        depth: total.depth / count,
+        flow: total.flow / count,
+      };
+
+      // Radar center = (150, 130), max radius approx 95
+      // Maker: Top (150, 130 - r * (maker/100))
+      // Social: Top-right (150 + r * cos(-18 deg), 130 - r * sin(-18 deg)) -> angle -18°
+      // Hustle: Bottom-right (150 + r * cos(54 deg), 130 + r * sin(54 deg))
+      // Depth: Bottom-left (150 - r * cos(54 deg), 130 + r * sin(54 deg))
+      // Flow: Top-left (150 - r * cos(-18 deg), 130 - r * sin(-18 deg))
+      
+      const rMax = 95;
+      const pMaker = { x: 150, y: 130 - rMax * (avg.maker / 100) };
+      const pSocial = { 
+        x: 150 + Math.cos(-0.314) * rMax * (avg.social / 100), 
+        y: 130 + Math.sin(-0.314) * rMax * (avg.social / 100) 
+      };
+      const pHustle = { 
+        x: 150 + Math.cos(0.942) * rMax * (avg.hustle / 100), 
+        y: 130 + Math.sin(0.942) * rMax * (avg.hustle / 100) 
+      };
+      const pDepth = { 
+        x: 150 - Math.cos(0.942) * rMax * (avg.depth / 100), 
+        y: 130 + Math.sin(0.942) * rMax * (avg.depth / 100) 
+      };
+      const pFlow = { 
+        x: 150 - Math.cos(-0.314) * rMax * (avg.flow / 100), 
+        y: 130 + Math.sin(-0.314) * rMax * (avg.flow / 100) 
+      };
+
+      const pointsStr = `${pMaker.x.toFixed(1)},${pMaker.y.toFixed(1)} ${pSocial.x.toFixed(1)},${pSocial.y.toFixed(1)} ${pHustle.x.toFixed(1)},${pHustle.y.toFixed(1)} ${pDepth.x.toFixed(1)},${pDepth.y.toFixed(1)} ${pFlow.x.toFixed(1)},${pFlow.y.toFixed(1)}`;
+      document.getElementById('radarPolygon').setAttribute('points', pointsStr);
+
+      // Update radar vertex marker dots
+      const setDot = (id, pt) => {
+        const dot = document.getElementById(id);
+        if (dot) {
+          dot.setAttribute('cx', pt.x.toFixed(1));
+          dot.setAttribute('cy', pt.y.toFixed(1));
+        }
+      };
+      setDot('dotMaker', pMaker);
+      setDot('dotSocial', pSocial);
+      setDot('dotHustle', pHustle);
+      setDot('dotDepth', pDepth);
+      setDot('dotFlow', pFlow);
+
+      // Check presets or synthesize Archetype Title
+      const sortedKey = [...selectedInterests].sort().join('+');
+      let archetype = archetypePresets[sortedKey];
+
+      if (!archetype) {
+        // Dynamic name generator
+        const interestObjs = selectedInterests.map(id => ALL_INTERESTS.find(x => x.id === id));
+        const labels = interestObjs.map(x => x.label.split(' ')[0]);
+        const icons = interestObjs.map(x => x.icon).join(' + ');
+
+        const adjectives = ['The Kinetic', 'The Cyber', 'The Neural', 'The Pragmatic', 'The Wild', 'The Stoic', 'The Avant-Garde'];
+        const nouns = ['Omnivore', 'Architect', 'Alchemist', 'Catalyst', 'Synthesizer', 'Strategist', 'Storycrafter'];
+        
+        const adj = adjectives[(selectedInterests.length + selectedInterests[0].charCodeAt(0)) % adjectives.length];
+        const noun = nouns[(selectedInterests.length + selectedInterests[1].charCodeAt(0)) % nouns.length];
+
+        archetype = {
+          title: `${adj} ${labels[0]} ${noun}`,
+          tagline: `You bridge ${labels.join(', ')} with infectious extrovert momentum and maker dexterity.`,
+          rarity: `Top ${Math.floor(2 + Math.random() * 5)}% Hybrid Rarity`,
+          hustleTitle: `${labels[0]} & ${labels[1]} Venture Lab`,
+          hustleDesc: `A high-margin product studio or boutique content collective merging ${labels.join(' with ')}.`,
+          hustleFormula: icons
+        };
+      }
+
+      document.getElementById('archetypeTitle').textContent = archetype.title;
+      document.getElementById('archetypeTagline').textContent = archetype.tagline;
+      document.getElementById('rarityBadge').textContent = archetype.rarity;
+      document.getElementById('matchedHustleTitle').textContent = archetype.hustleTitle;
+      document.getElementById('matchedHustleDesc').textContent = archetype.hustleDesc;
+      document.getElementById('matchedHustleFormula').textContent = archetype.hustleFormula;
+    }
+
+    // Shuffle & Clear event listeners
+    document.getElementById('shuffleInterestsBtn').addEventListener('click', () => {
+      const shuffled = [...ALL_INTERESTS].sort(() => 0.5 - Math.random());
+      selectedInterests = shuffled.slice(0, 3 + Math.floor(Math.random() * 3)).map(x => x.id);
+      sound.fanfare();
+      renderInterestChips();
+      calculatePersonalityBlend();
+      showToast('Surprise blend generated! 🎲', '✨');
+    });
+
+    document.getElementById('clearInterestsBtn').addEventListener('click', () => {
+      selectedInterests = ['tech', 'cooking', 'writing'];
+      sound.pop();
+      renderInterestChips();
+      calculatePersonalityBlend();
+    });
+
+    renderInterestChips();
+    calculatePersonalityBlend();
+
+    /* -------------------------------------------------------------
+     * 7. SIDE HUSTLE EXPLORER (12 RICH FLIP CARDS)
+     * -----------------------------------------------------------*/
+    const HUSTLES_DATA = [
+      {
+        id: 1,
+        title: 'Fermentation AI & Recipe Substack',
+        tagline: 'Culinary science meets code & storytelling',
+        skills: ['🍳 Cooking', '💻 Python', '✍️ Substack'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'solo',
+        crewLabel: 'Solo Builder',
+        cost: '$',
+        costLabel: '$40 startup',
+        monthly: '$1,800 - $4,200/mo',
+        steps: [
+          'Document 3 wild sourdough/kombucha experiments with fermentation curve graphs.',
+          'Launch a paid Substack tier ($7/mo) with monthly live ferment labs.',
+          'Package the Python tracker as a $19 micro-app on Gumroad.'
+        ],
+        idealCrew: 'Visual food photographer or kitchen tinkerer',
+        gradient: 'from-amber-400 to-rose-400'
+      },
+      {
+        id: 2,
+        title: 'Vintage Synthesizer Restoration Club',
+        tagline: 'Soldering nostalgia & selling sample packs',
+        skills: ['🎵 Audio', '🤖 Hardware', '🎨 Video'],
+        commitment: 'part-time',
+        commitmentLabel: '10 hrs/wk',
+        crew: 'crew',
+        crewLabel: 'Needs Co-Founder',
+        cost: '$$',
+        costLabel: '$350 startup',
+        monthly: '$2,500 - $6,000/mo',
+        steps: [
+          'Source broken 80s Casio and Yamaha keyboards from estate sales.',
+          'Restore circuitry on TikTok/YouTube live streams to build audience.',
+          'Sell restored units at 300% markup plus $29 digital sample packs.'
+        ],
+        idealCrew: 'Electrical engineer + Lo-fi beatmaker',
+        gradient: 'from-violet-500 to-purple-400'
+      },
+      {
+        id: 3,
+        title: 'Boutique Financial Literacy Board Games',
+        tagline: 'Gamifying personal finance for visual thinkers',
+        skills: ['📈 Finance', '🎨 3D Art', '🏛️ Philosophy'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'solo',
+        crewLabel: 'Solo Builder',
+        cost: '$$',
+        costLabel: '$200 prototype',
+        monthly: '$3,000 - $8,500/mo',
+        steps: [
+          'Design printable tabletop cards simulating portfolio crashes with brutal humor.',
+          'Run weekend playtests at local game cafes with 20 polymaths.',
+          'Launch a Kickstarter campaign with a $5,000 minimum goal.'
+        ],
+        idealCrew: 'Illustrator + Game mechanics designer',
+        gradient: 'from-emerald-400 to-teal-500'
+      },
+      {
+        id: 4,
+        title: 'Pop-Up IoT Acoustic Espresso Lounge',
+        tagline: 'Sensory coffee + vinyl sessions in unusual spaces',
+        skills: ['☕ Coffee', '🤖 Hardware', '🎪 Community'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'crew',
+        crewLabel: 'Needs Crew',
+        cost: '$$$',
+        costLabel: '$800 equipment',
+        monthly: '$2,200 - $5,400/mo',
+        steps: [
+          'Outfit a modular mobile bar with Arduino pressure sensors and warm wood.',
+          'Partner with boutique co-working spaces or art galleries for Sunday mornings.',
+          'Charge ticketed entry ($25) including 3 bean flights & curated vinyl set.'
+        ],
+        idealCrew: 'Barista perfectionist + Vinyl selector / DJ',
+        gradient: 'from-amber-500 to-orange-400'
+      },
+      {
+        id: 5,
+        title: 'Fitness & Philosophy Outdoor Sprints',
+        tagline: 'Sweat through cognitive dissonance',
+        skills: ['🏋️ Fitness', '🏛️ Philosophy', '🎪 Community'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'solo',
+        crewLabel: 'Solo Builder',
+        cost: '$',
+        costLabel: '$50 permits',
+        monthly: '$1,500 - $3,500/mo',
+        steps: [
+          'Pick a scenic park trail and structure a 60-min interval sprint debate format.',
+          'Discuss Marcus Aurelius & Nietzsche during heart-rate recovery intervals.',
+          'Sell 4-week cohort passes at $120 per athlete.'
+        ],
+        idealCrew: 'Certified trainer + Philosophy graduate',
+        gradient: 'from-blue-500 to-indigo-600'
+      },
+      {
+        id: 6,
+        title: 'Notion Architect for Neurodivergent Creators',
+        tagline: 'High-dopamine productivity dashboards',
+        skills: ['💻 Tech', '🧠 Psychology', '🎨 Design'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'solo',
+        crewLabel: 'Solo Builder',
+        cost: '$',
+        costLabel: '$0 startup',
+        monthly: '$3,200 - $7,000/mo',
+        steps: [
+          'Build 3 colorful, non-linear Notion templates specifically for ADHD brains.',
+          'Post 30-second screen recordings on TikTok highlighting gamified progress bars.',
+          'Offer 1-on-1 workflow audit sessions at $250 / 90 minutes.'
+        ],
+        idealCrew: 'Notion wizard + ADHD creator advocate',
+        gradient: 'from-pink-500 to-rose-400'
+      },
+      {
+        id: 7,
+        title: 'Urban Foraging & Botanical Cocktail Lab',
+        tagline: 'Wild flavor elixirs from city flora',
+        skills: ['🌿 Botany', '🍳 Culinary', '✍️ Writing'],
+        commitment: 'part-time',
+        commitmentLabel: '8 hrs/wk',
+        crew: 'crew',
+        crewLabel: 'Needs Crew',
+        cost: '$',
+        costLabel: '$90 jars & spirits',
+        monthly: '$1,900 - $4,800/mo',
+        steps: [
+          'Map safe edible urban herbs (rosemary, elderflower, pine needles, clover).',
+          'Formulate 4 non-alcoholic bitter syrups and botanical tinctures.',
+          'Host private tasting saloons and sell bottled bitters online.'
+        ],
+        idealCrew: 'Ethnobotanist + Mixologist / Host',
+        gradient: 'from-teal-400 to-emerald-600'
+      },
+      {
+        id: 8,
+        title: 'Generative Tarot for Startup Post-Mortems',
+        tagline: 'Humorous divination for failed software architecture',
+        skills: ['💻 Code', '🎭 Comedy', '🎨 Design'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'solo',
+        crewLabel: 'Solo Builder',
+        cost: '$',
+        costLabel: '$80 print run',
+        monthly: '$1,200 - $3,800/mo',
+        steps: [
+          'Design 78 satirical cards (e.g. "The Microservice Tower", "The VC Devil").',
+          'Build a free viral web generator at startup-tarot.com with Twitter share cards.',
+          'Sell custom embossed physical collector decks at $38 a pop.'
+        ],
+        idealCrew: 'Tech satirist + Vector artist',
+        gradient: 'from-fuchsia-500 to-violet-600'
+      },
+      {
+        id: 9,
+        title: '3D-Printed Desktop Hydroponic Bonsai',
+        tagline: 'Biophilic desktop micro-gardens for remote workers',
+        skills: ['🤖 Hardware', '🌿 Botany', '🎨 3D Art'],
+        commitment: 'part-time',
+        commitmentLabel: '10 hrs/wk',
+        crew: 'crew',
+        crewLabel: 'Needs Co-Founder',
+        cost: '$$',
+        costLabel: '$300 printer filament',
+        monthly: '$2,800 - $7,500/mo',
+        steps: [
+          'CAD model modular geometric planters with self-watering capillary wicks.',
+          '3D print 10 prototypes using marble-infused matte PLA filament.',
+          'Bundle with rare dwarf succulent cuttings and sell via Etsy & Shopify.'
+        ],
+        idealCrew: 'Industrial CAD modeler + Horticulture geek',
+        gradient: 'from-cyan-500 to-blue-600'
+      },
+      {
+        id: 10,
+        title: 'Micro-SaaS for Ceramics Studio Kiln Booking',
+        tagline: 'Solving chaotic kiln schedules for pottery collectives',
+        skills: ['💻 Code', '🎨 Crafts', '📈 Sales'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'solo',
+        crewLabel: 'Solo Builder',
+        cost: '$',
+        costLabel: '$20 domain',
+        monthly: '$2,400 - $6,500/mo',
+        steps: [
+          'Interview 5 local pottery studio owners about firing schedule headaches.',
+          'Build a simple Next.js calendar booking & temperature log tool in 48 hours.',
+          'Charge $49/mo per studio with instant SMS notifications for potters.'
+        ],
+        idealCrew: 'Fullstack web dev + Ceramic artist',
+        gradient: 'from-amber-600 to-stone-600'
+      },
+      {
+        id: 11,
+        title: 'Lo-Fi Ambient Drone Hardware Boxes',
+        tagline: 'Tactile sound generators for deep focus work',
+        skills: ['🎵 Audio', '🤖 Hardware', '🎨 Woodwork'],
+        commitment: 'part-time',
+        commitmentLabel: '8 hrs/wk',
+        crew: 'crew',
+        crewLabel: 'Needs Crew',
+        cost: '$$',
+        costLabel: '$250 parts',
+        monthly: '$3,500 - $9,000/mo',
+        steps: [
+          'Build simple 555-timer square-wave generators inside walnut wooden enclosures.',
+          'Post soothing desk aesthetic videos with hypnotic ambient sound loops.',
+          'Sell limited batches of 25 units at $180 each.'
+        ],
+        idealCrew: 'Analog circuit designer + Fine woodworker',
+        gradient: 'from-orange-500 to-amber-700'
+      },
+      {
+        id: 12,
+        title: 'Standup Comedy for Fintech Risk Teams',
+        tagline: 'Hilarious, brutally honest risk management audits',
+        skills: ['🎭 Comedy', '📈 Finance', '✍️ Speech'],
+        commitment: 'weekend',
+        commitmentLabel: '< 5 hrs/wk',
+        crew: 'solo',
+        crewLabel: 'Solo Builder',
+        cost: '$',
+        costLabel: '$0 startup',
+        monthly: '$4,000 - $12,000/mo',
+        steps: [
+          'Draft a 45-minute keynote breaking down real financial disasters through standup.',
+          'Pitch compliance officers and risk directors on LinkedIn for team offsites.',
+          'Charge $3,500 per corporate performance + interactive roleplay drill.'
+        ],
+        idealCrew: 'Former investment banker + Standup comic',
+        gradient: 'from-yellow-400 to-rose-500'
+      }
+    ];
+
+    function renderHustles(filter = 'all') {
+      const grid = document.getElementById('hustlesGrid');
+      grid.innerHTML = '';
+
+      const filtered = HUSTLES_DATA.filter(item => {
+        if (filter === 'all') return true;
+        if (filter === 'solo') return item.crew === 'solo';
+        if (filter === 'crew') return item.crew === 'crew';
+        if (filter === 'weekend') return item.commitment === 'weekend';
+        return true;
+      });
+
+      filtered.forEach(hustle => {
+        const card = document.createElement('div');
+        card.className = 'hustle-card perspective-1000 h-[380px] cursor-pointer group';
+        
+        card.innerHTML = `
+          <div class="card-inner relative w-full h-full transform-style-3d transition-transform duration-700 rounded-3xl">
+            
+            <!-- FRONT OF CARD -->
+            <div class="absolute inset-0 backface-hidden bg-brand-cream dark:bg-brand-darkcard rounded-3xl p-6 sm:p-7 border-3 border-brand-navy dark:border-white/20 shadow-pop-lg flex flex-col justify-between overflow-hidden">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${hustle.gradient} opacity-20 rounded-bl-full pointer-events-none"></div>
+
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-white dark:bg-brand-navy text-brand-navy dark:text-gray-200 border border-brand-navy/30 dark:border-white/20">
+                    ${hustle.crew === 'solo' ? '🧑‍💻 ' + hustle.crewLabel : '👥 ' + hustle.crewLabel}
+                  </span>
+                  <span class="text-xs font-mono font-bold text-brand-coral">
+                    ${hustle.commitmentLabel}
+                  </span>
+                </div>
+
+                <h3 class="font-display font-extrabold text-xl sm:text-2xl text-brand-navy dark:text-white group-hover:text-brand-coral transition-colors leading-tight mb-2">
+                  ${hustle.title}
+                </h3>
+                
+                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-4 font-medium">
+                  ${hustle.tagline}
+                </p>
+
+                <!-- Skill Tags -->
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  ${hustle.skills.map(s => `<span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-brand-softgray dark:bg-white/10 text-brand-navy dark:text-gray-200">${s}</span>`).join('')}
+                </div>
+              </div>
+
+              <!-- Footer info -->
+              <div class="pt-4 border-t border-brand-navy/10 dark:border-white/10 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-mono uppercase text-gray-500 dark:text-gray-400 block">Startup Cost</span>
+                  <span class="text-xs font-mono font-bold text-brand-navy dark:text-white">${hustle.costLabel}</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] font-mono uppercase text-gray-500 dark:text-gray-400 block">Monthly Target</span>
+                  <span class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">${hustle.monthly}</span>
+                </div>
+              </div>
+
+              <div class="mt-2 text-center text-xs font-mono font-bold text-brand-violet dark:text-brand-teal flex items-center justify-center gap-1">
+                <span>Flip for 72h Blueprint</span> <span>↻</span>
+              </div>
+            </div>
+
+            <!-- BACK OF CARD -->
+            <div class="absolute inset-0 backface-hidden rotate-y-180 bg-brand-navy text-white rounded-3xl p-6 sm:p-7 border-3 border-brand-coral shadow-pop-coral flex flex-col justify-between overflow-hidden">
+              <div>
+                <div class="flex items-center justify-between mb-3 pb-2 border-b border-white/15">
+                  <span class="text-xs font-mono font-bold uppercase text-brand-yellow">⚡ 72-Hour Blueprint</span>
+                  <span class="text-xs font-mono text-gray-400">Flip back ↺</span>
+                </div>
+
+                <div class="space-y-2.5 text-xs text-gray-200">
+                  <div class="flex items-start gap-2">
+                    <span class="font-mono font-bold text-brand-coral">01</span>
+                    <p>${hustle.steps[0]}</p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="font-mono font-bold text-brand-yellow">02</span>
+                    <p>${hustle.steps[1]}</p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="font-mono font-bold text-brand-teal">03</span>
+                    <p>${hustle.steps[2]}</p>
+                  </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-white/15">
+                  <span class="text-[10px] font-mono uppercase text-brand-teal block">Ideal Jam Partner</span>
+                  <span class="text-xs text-gray-300 font-medium">${hustle.idealCrew}</span>
+                </div>
+              </div>
+
+              <!-- Actions on back -->
+              <div class="flex gap-2 pt-3">
+                <a href="#networking" onclick="event.stopPropagation();" class="flex-1 text-center py-2 bg-brand-coral hover:bg-rose-500 text-white font-bold text-xs rounded-xl border border-white transition-colors">
+                  Find Partner 👋
+                </a>
+                <button onclick="event.stopPropagation(); sound.chime(); showToast('Saved to your polymath notebook! 📓');" class="px-3 py-2 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-xl border border-white/20 transition-colors">
+                  Save 🔖
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+
+        card.addEventListener('click', () => {
+          card.classList.toggle('card-flipped');
+          sound.pop();
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    renderHustles('all');
+
+    // Filter Buttons
+    document.querySelectorAll('.hustle-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.hustle-filter-btn').forEach(b => {
+          b.classList.remove('active', 'bg-brand-navy', 'text-white', 'dark:bg-white', 'dark:text-brand-navy');
+          b.classList.add('bg-white', 'dark:bg-brand-darkcard', 'text-brand-navy', 'dark:text-white');
+        });
+        btn.classList.add('active', 'bg-brand-navy', 'text-white', 'dark:bg-white', 'dark:text-brand-navy');
+        btn.classList.remove('bg-white', 'dark:bg-brand-darkcard');
+        sound.pop();
+        renderHustles(btn.dataset.filter);
+      });
+    });
+
+    /* -------------------------------------------------------------
+     * 8. NETWORKING FLOOR (JAM LOUNGE MEMBERS DATA & MODAL)
+     * -----------------------------------------------------------*/
+    const MEMBERS_DATA = [
+      {
+        id: 'maya',
+        name: 'Maya Lin',
+        role: 'Architect + DJ + Specialty Roaster',
+        seeking: 'cofounder',
+        seekingLabel: '🤝 Looking for Co-Founder',
+        seekingColor: 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300',
+        obsessions: ['Spatial Audio', 'Modular Roasters', 'Acoustic Design'],
+        project: 'Building an IoT acoustic espresso cart for Sunday jams.',
+        avatarEmoji: '🎧',
+        avatarBg: 'bg-brand-coral',
+        location: 'Brooklyn, NY',
+        waves: 42
+      },
+      {
+        id: 'julian',
+        name: 'Julian Vance',
+        role: 'ER Nurse + iOS Dev + Sci-Fi Author',
+        seeking: 'jam',
+        seekingLabel: '🎸 Jam Partner Wanted',
+        seekingColor: 'bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-300',
+        obsessions: ['SwiftUI', 'Medical Triage', 'World Building'],
+        project: 'Prototyping a voice-first patient notes app for night shifts.',
+        avatarEmoji: '👨‍⚕️',
+        avatarBg: 'bg-brand-violet',
+        location: 'London, UK',
+        waves: 38
+      },
+      {
+        id: 'priya',
+        name: 'Priya Patel',
+        role: 'Fintech Analyst + Standup Comic',
+        seeking: 'cofounder',
+        seekingLabel: '🤝 Looking for Co-Founder',
+        seekingColor: 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300',
+        obsessions: ['Risk Arbitrage', 'Satire Writing', 'TikTok Hooks'],
+        project: 'Launching corporate comedy roasts on risk management.',
+        avatarEmoji: '🎭',
+        avatarBg: 'bg-brand-yellow',
+        location: 'San Francisco, CA',
+        waves: 65
+      },
+      {
+        id: 'leo',
+        name: 'Leo Takahashi',
+        role: 'Woodworker + Sourdough Baker + Mech-E',
+        seeking: 'accountability',
+        seekingLabel: '🎯 Accountability Buddy',
+        seekingColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300',
+        obsessions: ['PID Controllers', 'Wild Yeasts', 'Walnut Joinery'],
+        project: 'Automated tabletop proofing chamber for micro-bakeries.',
+        avatarEmoji: '🪵',
+        avatarBg: 'bg-brand-teal',
+        location: 'Seattle, WA',
+        waves: 51
+      },
+      {
+        id: 'sora',
+        name: 'Sora Kim',
+        role: 'Game Designer + Sommelier + Synth Nerd',
+        seeking: 'jam',
+        seekingLabel: '🎸 Jam Partner Wanted',
+        seekingColor: 'bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-300',
+        obsessions: ['Natural Wine', 'Godot Engine', 'FM Synthesis'],
+        project: 'A roguelike game where spells are mixed like biodynamic wine.',
+        avatarEmoji: '🍷',
+        avatarBg: 'bg-brand-pink',
+        location: 'Berlin, DE',
+        waves: 29
+      },
+      {
+        id: 'elena',
+        name: 'Elena Rostova',
+        role: 'Neuroscientist + Ceramicist + Podcaster',
+        seeking: 'cofounder',
+        seekingLabel: '🤝 Looking for Co-Founder',
+        seekingColor: 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300',
+        obsessions: ['Flow States', 'Stoneware Glazes', 'Audio Storytelling'],
+        project: 'Tactile ceramic objects calibrated for sensory grounding drills.',
+        avatarEmoji: '🧠',
+        avatarBg: 'bg-amber-400',
+        location: 'Toronto, CA',
+        waves: 47
+      },
+      {
+        id: 'tariq',
+        name: 'Tariq Al-Mansoor',
+        role: 'Aerospace Engineer + Perfumer + Pianist',
+        seeking: 'jam',
+        seekingLabel: '🎸 Jam Partner Wanted',
+        seekingColor: 'bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-300',
+        obsessions: ['Thermodynamics', 'Oud Distillation', 'Chopin Nocturnes'],
+        project: 'Scent-infused acoustic soundboxes for focused deep work.',
+        avatarEmoji: '🎹',
+        avatarBg: 'bg-indigo-500',
+        location: 'Dubai / Remote',
+        waves: 33
+      },
+      {
+        id: 'chloe',
+        name: 'Chloe Dupont',
+        role: 'Botanist + Cocktail Alchemist + Illustrator',
+        seeking: 'accountability',
+        seekingLabel: '🎯 Accountability Buddy',
+        seekingColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300',
+        obsessions: ['Wild Foraging', 'Botanical Bitters', 'Risograph Prints'],
+        project: 'Monthly foraging zine bundled with hand-distilled urban elixirs.',
+        avatarEmoji: '🌿',
+        avatarBg: 'bg-emerald-500',
+        location: 'Paris, FR',
+        waves: 40
+      },
+      {
+        id: 'marcus',
+        name: 'Marcus Brody',
+        role: 'Strength Coach + Ethics Lecturer + Hacker',
+        seeking: 'cofounder',
+        seekingLabel: '🤝 Looking for Co-Founder',
+        seekingColor: 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300',
+        obsessions: ['Kettlebells', 'Epictetus', 'Open Source Security'],
+        project: 'An endurance boot camp community built around Socratic seminars.',
+        avatarEmoji: '🏋️',
+        avatarBg: 'bg-brand-coral',
+        location: 'Austin, TX',
+        waves: 56
+      },
+      {
+        id: 'zara',
+        name: 'Zara Chen',
+        role: 'Costume Designer + Robotics Builder',
+        seeking: 'jam',
+        seekingLabel: '🎸 Jam Partner Wanted',
+        seekingColor: 'bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-300',
+        obsessions: ['Animatronics', 'Vintage Silk', 'Arduino Servo Shields'],
+        project: 'Kinetic wearable wings triggered by biometric pulse sensors.',
+        avatarEmoji: '🦋',
+        avatarBg: 'bg-cyan-400',
+        location: 'Melbourne, AU',
+        waves: 62
+      }
+    ];
+
+    let activeMemberFilter = 'all';
+
+    function renderMembers(filter = 'all') {
+      activeMemberFilter = filter;
+      const grid = document.getElementById('membersGrid');
+      grid.innerHTML = '';
+
+      const filtered = MEMBERS_DATA.filter(m => {
+        if (filter === 'all') return true;
+        return m.seeking === filter;
+      });
+
+      filtered.forEach(member => {
+        const card = document.createElement('div');
+        card.className = 'bg-white dark:bg-brand-darkcard rounded-3xl p-5 border-2 border-brand-navy dark:border-white/20 shadow-pop hover:-translate-y-1 transition-all flex flex-col justify-between';
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="relative">
+                <div class="w-12 h-12 rounded-2xl ${member.avatarBg} border-2 border-brand-navy flex items-center justify-center text-2xl shadow-sm">
+                  ${member.avatarEmoji}
+                </div>
+                <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-brand-darkcard"></span>
+              </div>
+              <span class="text-[10px] font-mono font-bold px-2 py-1 rounded-full ${member.seekingColor}">
+                ${member.seekingLabel}
+              </span>
+            </div>
+
+            <h4 class="font-display font-bold text-base text-brand-navy dark:text-white leading-tight">
+              ${member.name}
+            </h4>
+            <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400 block mb-2">${member.location}</span>
+            <p class="text-xs font-semibold text-brand-violet dark:text-brand-teal mb-3 leading-snug">
+              ${member.role}
+            </p>
+
+            <div class="bg-brand-cream/60 dark:bg-brand-navy/60 rounded-xl p-2.5 border border-brand-navy/10 dark:border-white/10 mb-3">
+              <span class="text-[9px] font-mono uppercase text-gray-500 dark:text-gray-400 block mb-0.5">Currently Jamming On</span>
+              <p class="text-[11px] text-gray-700 dark:text-gray-300 font-medium line-clamp-2">
+                ${member.project}
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center gap-2">
+            <button class="wave-btn flex-1 py-1.5 px-2 bg-brand-yellow hover:bg-amber-300 text-brand-navy font-bold text-xs rounded-xl border border-brand-navy shadow-sm active:scale-95 transition-all flex items-center justify-center gap-1">
+              <span>Wave 👋</span>
+              <span class="wave-count font-mono font-bold">(${member.waves})</span>
+            </button>
+            <button class="view-profile-btn p-1.5 bg-brand-softgray dark:bg-white/10 hover:bg-brand-coral hover:text-white rounded-xl border border-brand-navy/20 dark:border-white/20 text-xs font-bold transition-colors" title="View Full Profile">
+              🔍
+            </button>
+          </div>
+        `;
+
+        // Wave button interaction
+        const waveBtn = card.querySelector('.wave-btn');
+        const waveCountSpan = card.querySelector('.wave-count');
+        waveBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          member.waves++;
+          waveCountSpan.textContent = `(${member.waves})`;
+          sound.waveChime();
+          
+          // Confetti particle shower from button
+          const rect = waveBtn.getBoundingClientRect();
+          const x = (rect.left + rect.width / 2) / window.innerWidth;
+          const y = (rect.top + rect.height / 2) / window.innerHeight;
+          
+          if (typeof confetti === 'function') {
+            confetti({
+              particleCount: 22,
+              spread: 60,
+              origin: { x, y },
+              colors: ['#FF5E5E', '#FFC837', '#7A5AF8', '#00D6B2']
+            });
+          }
+          showToast(`You waved to ${member.name}! High five! 👋`, '🎉');
+        });
+
+        // Profile details modal trigger
+        card.querySelector('.view-profile-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          openMemberModal(member);
+        });
+
+        card.addEventListener('click', () => {
+          openMemberModal(member);
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    renderMembers('all');
+
+    // Member Filter Buttons
+    document.querySelectorAll('.member-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.member-filter-btn').forEach(b => {
+          b.classList.remove('active', 'bg-brand-navy', 'text-white', 'dark:bg-white', 'dark:text-brand-navy');
+          b.classList.add('bg-white', 'dark:bg-brand-navy', 'text-brand-navy', 'dark:text-white');
+        });
+        btn.classList.add('active', 'bg-brand-navy', 'text-white', 'dark:bg-white', 'dark:text-brand-navy');
+        btn.classList.remove('bg-white', 'dark:bg-brand-navy');
+        sound.pop();
+        activeMemberFilter = btn.dataset.memberFilter;
+        renderMembers(activeMemberFilter);
+      });
+    });
+
+    // Member Modal Logic
+    const memberModal = document.getElementById('memberModal');
+    const memberModalContent = document.getElementById('memberModalContent');
+    const closeMemberModalBtn = document.getElementById('closeMemberModalBtn');
+
+    function openMemberModal(member) {
+      sound.pop();
+      memberModalContent.innerHTML = `
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-16 h-16 rounded-2xl ${member.avatarBg} border-3 border-brand-navy flex items-center justify-center text-3xl shadow-pop">
+            ${member.avatarEmoji}
+          </div>
+          <div>
+            <h3 class="font-display font-black text-2xl text-brand-navy dark:text-white">${member.name}</h3>
+            <span class="text-xs font-mono text-gray-500 dark:text-gray-400">${member.location}</span>
+            <div class="mt-1">
+              <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${member.seekingColor}">${member.seekingLabel}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <span class="text-xs font-mono uppercase text-gray-500 font-bold block mb-1">Triple-Hyphenate Identity</span>
+          <p class="font-bold text-base text-brand-coral dark:text-brand-yellow">${member.role}</p>
+        </div>
+
+        <div class="mb-4">
+          <span class="text-xs font-mono uppercase text-gray-500 font-bold block mb-1">Top Obsessions This Month</span>
+          <div class="flex flex-wrap gap-1.5">
+            ${member.obsessions.map(o => `<span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-brand-softgray dark:bg-white/10 text-brand-navy dark:text-gray-200">${o}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="bg-brand-cream/70 dark:bg-brand-navy/60 p-4 rounded-2xl border-2 border-brand-navy/15 dark:border-white/10 mb-6">
+          <span class="text-xs font-mono uppercase text-brand-teal font-bold block mb-1">Active Project</span>
+          <p class="text-sm text-gray-700 dark:text-gray-300 font-medium">${member.project}</p>
+        </div>
+
+        <div class="flex gap-3">
+          <button id="modalWaveBtn" class="flex-1 py-3 bg-brand-yellow hover:bg-amber-300 text-brand-navy font-black text-sm rounded-xl border-2 border-brand-navy shadow-pop transition-transform active:scale-95">
+            Wave 👋 (${member.waves})
+          </button>
+          <button id="modalJamInviteBtn" class="flex-1 py-3 bg-brand-coral hover:bg-rose-500 text-white font-black text-sm rounded-xl border-2 border-brand-navy shadow-pop transition-transform active:scale-95">
+            Send Jam Request 💌
+          </button>
+        </div>
+      `;
+
+      memberModal.classList.remove('hidden');
+
+      document.getElementById('modalWaveBtn').addEventListener('click', () => {
+        member.waves++;
+        sound.waveChime();
+        if (typeof confetti === 'function') {
+          confetti({ particleCount: 30, spread: 70, origin: { y: 0.6 } });
+        }
+        showToast(`Sent a wave to ${member.name}! 👋`, '⚡');
+        renderMembers(activeMemberFilter);
+        memberModal.classList.add('hidden');
+      });
+
+      document.getElementById('modalJamInviteBtn').addEventListener('click', () => {
+        sound.chime();
+        showToast(`Jam invitation sent to ${member.name}! Check your Discord/email.`, '💌');
+        memberModal.classList.add('hidden');
+      });
+    }
+
+    closeMemberModalBtn.addEventListener('click', () => {
+      memberModal.classList.add('hidden');
+      sound.pop();
+    });
+
+    memberModal.addEventListener('click', (e) => {
+      if (e.target === memberModal) {
+        memberModal.classList.add('hidden');
+      }
+    });
+
+    /* -------------------------------------------------------------
+     * 9. EVENTS & MEETUPS TIMELINE (LIVE COUNTDOWN TIMERS)
+     * -----------------------------------------------------------*/
+    const now = Date.now();
+    const EVENTS_DATA = [
+      {
+        id: 'evt1',
+        title: 'The 48-Hour Cross-Domain Idea Blitz',
+        format: 'Virtual Jam (Discord & Figma)',
+        tag: 'Hackathon',
+        tagColor: 'bg-rose-500 text-white',
+        desc: 'Build and demo a functioning prototype combining two completely unrelated industries. No decks allowed — demo code, crafts, or recipes only.',
+        hoursAhead: 74,
+        targetTime: now + 74 * 3600 * 1000,
+        attendees: 184,
+        rsvpd: false
+      },
+      {
+        id: 'evt2',
+        title: 'Skill Swap Roulette: Teach in 15 Minutes',
+        format: 'Speed Sessions (Zoom Breakouts)',
+        tag: 'Skill Swap',
+        tagColor: 'bg-violet-600 text-white',
+        desc: 'Speed-dating format where you teach your weirdest craft for 15 minutes, then switch and learn sourdough fermentation, SwiftUI, or synth patching.',
+        hoursAhead: 132,
+        targetTime: now + 132 * 3600 * 1000,
+        attendees: 96,
+        rsvpd: false
+      },
+      {
+        id: 'evt3',
+        title: 'Polymath Pitch Night: No Pitch Decks Allowed',
+        format: 'Hybrid (Brooklyn, NY + Livestream)',
+        tag: 'Live Demos',
+        tagColor: 'bg-amber-400 text-brand-navy',
+        desc: 'Present what you made this weekend in 3 minutes. Physical objects, web micro-apps, and edible prototypes heavily encouraged.',
+        hoursAhead: 198,
+        targetTime: now + 198 * 3600 * 1000,
+        attendees: 210,
+        rsvpd: false
+      },
+      {
+        id: 'evt4',
+        title: 'Midnight Lo-Fi Co-Working & Ambient Synth Jam',
+        format: 'Virtual Flow Room',
+        tag: 'Co-Working',
+        tagColor: 'bg-teal-500 text-white',
+        desc: 'Late-night pomodoro sprint with live modular synth drone accompaniment. Pure flow state for night owls.',
+        hoursAhead: 260,
+        targetTime: now + 260 * 3600 * 1000,
+        attendees: 142,
+        rsvpd: false
+      },
+      {
+        id: 'evt5',
+        title: 'Side Hustle Roast & Toast: Brutal Love for Wild Concepts',
+        format: 'Interactive Stream',
+        tag: 'Idea Feedback',
+        tagColor: 'bg-pink-500 text-white',
+        desc: 'Submit your weirdest cross-discipline hustle. Our panel of multi-million dollar polymaths breaks down how to monetize it in 30 days.',
+        hoursAhead: 340,
+        targetTime: now + 340 * 3600 * 1000,
+        attendees: 312,
+        rsvpd: false
+      }
+    ];
+
+    function renderEvents() {
+      const container = document.getElementById('eventsList');
+      container.innerHTML = '';
+
+      EVENTS_DATA.forEach((evt, idx) => {
+        const card = document.createElement('div');
+        card.className = 'bg-brand-cream/80 dark:bg-brand-darkcard rounded-3xl p-6 sm:p-7 border-3 border-brand-navy dark:border-white/20 shadow-pop-lg flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6';
+
+        // Target timestamp is preserved
+        const targetTime = evt.targetTime;
+
+        card.innerHTML = `
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full ${evt.tagColor} border border-brand-navy">
+                ${evt.tag}
+              </span>
+              <span class="text-xs font-mono font-semibold text-gray-500 dark:text-gray-400">
+                📍 ${evt.format}
+              </span>
+              <span class="text-xs font-mono font-bold text-brand-teal">
+                👥 ${evt.attendees} attending
+              </span>
+            </div>
+
+            <h3 class="font-display font-extrabold text-xl sm:text-2xl text-brand-navy dark:text-white mb-2">
+              ${evt.title}
+            </h3>
+
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 font-medium max-w-2xl leading-relaxed">
+              ${evt.desc}
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-3 w-full lg:w-auto">
+            <!-- Countdown Ticker -->
+            <div class="bg-white dark:bg-brand-navy px-4 py-2 rounded-2xl border-2 border-brand-navy dark:border-white/20 shadow-sm flex items-center gap-3">
+              <span class="text-[10px] font-mono uppercase font-bold text-gray-400">Starts In</span>
+              <div class="countdown-display font-mono font-black text-sm text-brand-coral" data-target="${targetTime}">
+                --d --h --m --s
+              </div>
+            </div>
+
+            <!-- RSVP Button -->
+            <button class="rsvp-btn w-full sm:w-auto px-6 py-2.5 ${evt.rsvpd ? 'bg-emerald-500 text-white' : 'bg-brand-coral hover:bg-rose-500 text-white'} font-black text-sm rounded-xl border-2 border-brand-navy shadow-pop hover:-translate-y-0.5 active:translate-y-0.5 transition-all">
+              ${evt.rsvpd ? '✓ Registered!' : 'RSVP Free 🎟️'}
+            </button>
+          </div>
+        `;
+
+        const rsvpBtn = card.querySelector('.rsvp-btn');
+        rsvpBtn.addEventListener('click', () => {
+          evt.rsvpd = !evt.rsvpd;
+          if (evt.rsvpd) {
+            evt.attendees++;
+            sound.fanfare();
+            if (typeof confetti === 'function') {
+              confetti({ particleCount: 35, spread: 60 });
+            }
+            showToast(`RSVP Confirmed for "${evt.title}"! Calendar invite downloaded.`, '🎉');
+          } else {
+            evt.attendees--;
+            sound.pop();
+            showToast('RSVP Cancelled.');
+          }
+          renderEvents();
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    renderEvents();
+
+    // Live countdown ticker updater
+    function updateEventCountdowns() {
+      document.querySelectorAll('.countdown-display').forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          el.textContent = 'LIVE NOW 🔴';
+        } else {
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const secs = Math.floor((diff % (1000 * 60)) / 1000);
+          el.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
+        }
+      });
+    }
+    setInterval(updateEventCountdowns, 1000);
+    updateEventCountdowns();
+
+    /* -------------------------------------------------------------
+     * 10. IDEA JAM BOARD (DRAGGABLE STICKY NOTES WITH REAL PHYSICS)
+     * -----------------------------------------------------------*/
+    let STICKY_NOTES = [
+      {
+        id: 'sn1',
+        title: 'Duolingo for Sommelier Palates 🍷',
+        pitch: 'Gamified 5-minute daily micro-drills on acidity & tannins paired with 50ml vial blind taste boxes.',
+        tag: 'Wine + EdTech',
+        author: 'Sora @sorawine',
+        color: 'yellow',
+        likes: 38,
+        x: 30,
+        y: 40,
+        tilt: -3
+      },
+      {
+        id: 'sn2',
+        title: 'Mechanical Keyboard MIDI Synths 🎹',
+        pitch: 'Mechanical keyboard PCBs where typing custom shortcuts triggers polyphonic chord progressions in Ableton.',
+        tag: 'Code + Audio',
+        author: 'Julian @vancetech',
+        color: 'coral',
+        likes: 54,
+        x: 320,
+        y: 60,
+        tilt: 2.5
+      },
+      {
+        id: 'sn3',
+        title: 'Sourdough IoT Proofing Box 🥖',
+        pitch: 'Arduino-controlled climate chamber with computer-vision rise detection that alerts your phone at peak rise.',
+        tag: 'Baking + Hardware',
+        author: 'Leo @leobakes',
+        color: 'mint',
+        likes: 47,
+        x: 620,
+        y: 50,
+        tilt: -2
+      },
+      {
+        id: 'sn4',
+        title: 'Philosophy Sprint Boot Camp 🏃',
+        pitch: 'Debating Epictetus and ethical dilemmas during 400m intervals. You cant run until your argument is cogent.',
+        tag: 'Fitness + Stoicism',
+        author: 'Marcus @marcuslifts',
+        color: 'cyan',
+        likes: 29,
+        x: 80,
+        y: 280,
+        tilt: 3.5
+      },
+      {
+        id: 'sn5',
+        title: 'Risograph Startup Post-Mortem Zines 📰',
+        pitch: 'High-aesthetic printed zines celebrating wild failed tech projects printed on neon vintage risograph ink.',
+        tag: 'Print + Media',
+        author: 'Chloe @chloeparis',
+        color: 'lavender',
+        likes: 41,
+        x: 400,
+        y: 270,
+        tilt: -1.5
+      },
+      {
+        id: 'sn6',
+        title: 'Standup Comedy for Fintech Risk 🎭',
+        pitch: 'Translating derivative liquidity crises into hilarious standup routines for auditor corporate offsites.',
+        tag: 'Comedy + Finance',
+        author: 'Priya @priyarisk',
+        color: 'yellow',
+        likes: 62,
+        x: 690,
+        y: 290,
+        tilt: 2
+      }
+    ];
+
+    const colorClasses = {
+      yellow: 'bg-amber-100 text-amber-950 border-amber-900/30',
+      coral: 'bg-rose-100 text-rose-950 border-rose-900/30',
+      mint: 'bg-emerald-100 text-emerald-950 border-emerald-900/30',
+      cyan: 'bg-cyan-100 text-cyan-950 border-cyan-900/30',
+      lavender: 'bg-purple-100 text-purple-950 border-purple-900/30',
+    };
+
+    // Adapt initial positions on mobile viewports so notes are not offscreen
+    if (window.innerWidth < 768) {
+      STICKY_NOTES.forEach((note, idx) => {
+        note.x = 15 + (idx % 2) * 160;
+        note.y = 20 + Math.floor(idx / 2) * 175;
+      });
+    }
+
+    function renderStickyNotes() {
+      const board = document.getElementById('stickyNotesBoard');
+      board.innerHTML = '';
+
+      STICKY_NOTES.forEach((note, index) => {
+        const sticky = document.createElement('div');
+        sticky.className = `sticky-note absolute w-64 sm:w-72 p-5 rounded-2xl border-2 shadow-pop transition-shadow select-none ${colorClasses[note.color] || colorClasses.yellow}`;
+        sticky.style.left = `${note.x}px`;
+        sticky.style.top = `${note.y}px`;
+        sticky.style.transform = `rotate(${note.tilt}deg)`;
+        sticky.style.zIndex = index + 1;
+
+        sticky.innerHTML = `
+          <!-- Tape graphic on top -->
+          <div class="sticky-tape"></div>
+
+          <div class="flex items-center justify-between mb-2 pt-1">
+            <span class="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-black/10">
+              ${note.tag}
+            </span>
+            <button class="sticky-like-btn text-xs font-mono font-bold hover:scale-125 transition-transform flex items-center gap-1 text-rose-600">
+              ❤️ <span class="like-count">${note.likes}</span>
+            </button>
+          </div>
+
+          <h4 class="font-display font-black text-base leading-tight mb-2">
+            ${note.title}
+          </h4>
+
+          <p class="text-xs font-medium opacity-90 leading-relaxed mb-4">
+            ${note.pitch}
+          </p>
+
+          <div class="text-[10px] font-mono font-bold opacity-70 flex items-center justify-between pt-2 border-t border-black/10">
+            <span>By ${note.author}</span>
+            <span>🖐️ Drag me</span>
+          </div>
+        `;
+
+        // Like button interaction
+        const likeBtn = sticky.querySelector('.sticky-like-btn');
+        likeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          note.likes++;
+          sticky.querySelector('.like-count').textContent = note.likes;
+          sound.pop();
+          showToast(`Liked "${note.title}"! ❤️`);
+        });
+
+        // Pointer Drag & Drop logic with boundary protection
+        let isDragging = false;
+        let startX, startY, origX, origY;
+
+        sticky.addEventListener('pointerdown', (e) => {
+          if (e.target.closest('button')) return;
+          isDragging = true;
+          sticky.setPointerCapture(e.pointerId);
+          startX = e.clientX;
+          startY = e.clientY;
+          origX = note.x;
+          origY = note.y;
+          sticky.style.zIndex = 999;
+          sticky.style.boxShadow = '12px 16px 25px rgba(0,0,0,0.25)';
+          sticky.style.transform = `rotate(${note.tilt * 1.5}deg) scale(1.04)`;
+          sound.pop();
+        });
+
+        sticky.addEventListener('pointermove', (e) => {
+          if (!isDragging) return;
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          
+          const container = document.getElementById('corkboardContainer');
+          const maxX = Math.max(10, (container ? container.clientWidth : 800) - sticky.offsetWidth - 15);
+          const maxY = Math.max(10, (container ? container.clientHeight : 580) - sticky.offsetHeight - 15);
+
+          note.x = Math.max(10, Math.min(maxX, origX + dx));
+          note.y = Math.max(10, Math.min(maxY, origY + dy));
+          sticky.style.left = `${note.x}px`;
+          sticky.style.top = `${note.y}px`;
+        });
+
+        function stopDrag() {
+          if (!isDragging) return;
+          isDragging = false;
+          sticky.style.boxShadow = '';
+          sticky.style.transform = `rotate(${note.tilt}deg) scale(1)`;
+        }
+
+        sticky.addEventListener('pointerup', stopDrag);
+        sticky.addEventListener('pointercancel', stopDrag);
+
+        board.appendChild(sticky);
+      });
+    }
+
+    renderStickyNotes();
+
+    // New Sticky Note Modal
+    const stickyModal = document.getElementById('stickyModal');
+    const openNewIdeaModalBtn = document.getElementById('openNewIdeaModalBtn');
+    const closeStickyModalBtn = document.getElementById('closeStickyModalBtn');
+    const newIdeaForm = document.getElementById('newIdeaForm');
+
+    openNewIdeaModalBtn.addEventListener('click', () => {
+      stickyModal.classList.remove('hidden');
+      sound.pop();
+    });
+
+    closeStickyModalBtn.addEventListener('click', () => {
+      stickyModal.classList.add('hidden');
+      sound.pop();
+    });
+
+    stickyModal.addEventListener('click', (e) => {
+      if (e.target === stickyModal) stickyModal.classList.add('hidden');
+    });
+
+    newIdeaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const color = document.querySelector('input[name="noteColor"]:checked').value;
+      const title = document.getElementById('newIdeaTitle').value.trim();
+      const pitch = document.getElementById('newIdeaBody').value.trim();
+      const author = document.getElementById('newIdeaAuthor').value.trim();
+      const tag = document.getElementById('newIdeaTag').value.trim();
+
+      const newNote = {
+        id: 'sn_' + Date.now(),
+        title,
+        pitch,
+        author,
+        tag,
+        color,
+        likes: 1,
+        x: 40 + Math.random() * 200,
+        y: 40 + Math.random() * 150,
+        tilt: (Math.random() - 0.5) * 6
+      };
+
+      STICKY_NOTES.unshift(newNote);
+      renderStickyNotes();
+      stickyModal.classList.add('hidden');
+      newIdeaForm.reset();
+
+      sound.fanfare();
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 50, spread: 80, origin: { y: 0.5 } });
+      }
+      showToast('Your wild idea was stuck to the Jam Wall! 🎉', '📌');
+    });
+
+    /* -------------------------------------------------------------
+     * 11. SUCCESS STORIES (CAROUSEL SLIDER)
+     * -----------------------------------------------------------*/
+    const STORIES_DATA = [
+      {
+        name: 'Maya Lin',
+        title: 'Architect + DJ + Specialty Roaster',
+        revenue: '$34,000 / month',
+        quote: '“I was told I had to pick between spatial design and techno music. Instead, I designed acoustic listening bars and custom portable espresso carts. Clients hire us because no pure architect or pure DJ understands the sensory blend.”',
+        timeline: ['2023: Architecture firm burnout', '2024: Started Sunday music/coffee pop-ups', '2025: $400k revenue in custom acoustic fixtures'],
+        avatar: '🎧',
+        bg: 'from-brand-coral to-brand-violet'
+      },
+      {
+        name: 'Julian Vance',
+        title: 'Emergency Room Nurse + iOS Dev + Sci-Fi Novelist',
+        revenue: '$14,500 / month',
+        quote: '“Healthcare gave me real stakes; coding gave me leverage; writing fantasy gave me freedom. My triage handover app took off because I built it at 3 AM while on duty, not in a Silicon Valley boardroom.”',
+        timeline: ['2022: Taught self Swift on weekend night shifts', '2023: Published debut novella (5,000 copies)', '2024: Handover app licensed across 12 clinic groups'],
+        avatar: '👨‍⚕️',
+        bg: 'from-brand-violet to-brand-teal'
+      },
+      {
+        name: 'Priya Patel',
+        title: 'Fintech Analyst + Standup Comic',
+        revenue: '$28,000 / month',
+        quote: '“Every corporate team is dying of boredom from generic PowerPoint decks. When I bring genuine comedic timing to explain credit risk and macroeconomics, the room erupts. Being funny made me 10x more valuable in finance.”',
+        timeline: ['2021: Wall Street risk associate', '2022: Open mic obsession after hours', '2025: Keynote comic for tier-1 bank offsites'],
+        avatar: '🎭',
+        bg: 'from-brand-yellow to-brand-coral'
+      },
+      {
+        name: 'Leo Takahashi',
+        title: 'Mechanical Engineer + Baker + YouTuber',
+        revenue: '$42,000 / month',
+        quote: '“People thought baking sourdough was a distraction from my engineering degree. But precision PID temperature control in fermentation is pure thermodynamics. My smart proofing box pre-orders sold out in 18 minutes.”',
+        timeline: ['2023: Viral sourdough timelapse videos (2M views)', '2024: Prototype proofing box built in garage', '2025: Scaled contract manufacturing in Japan'],
+        avatar: '🪵',
+        bg: 'from-brand-teal to-brand-yellow'
+      }
+    ];
+
+    let currentStoryIdx = 0;
+
+    function renderStories() {
+      const track = document.getElementById('carouselTrack');
+      const dotsContainer = document.getElementById('carouselDots');
+      track.innerHTML = '';
+      dotsContainer.innerHTML = '';
+
+      STORIES_DATA.forEach((story, idx) => {
+        const slide = document.createElement('div');
+        slide.className = 'w-full flex-shrink-0 p-8 sm:p-12';
+        slide.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            
+            <div class="md:col-span-4 flex flex-col items-center text-center">
+              <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-tr ${story.bg} border-3 border-brand-navy flex items-center justify-center text-5xl sm:text-6xl shadow-pop mb-4">
+                ${story.avatar}
+              </div>
+              <h4 class="font-display font-black text-2xl text-brand-navy dark:text-white">${story.name}</h4>
+              <p class="text-xs font-mono font-bold text-brand-coral dark:text-brand-yellow mt-1">${story.title}</p>
+              <div class="mt-3 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 font-mono text-xs font-extrabold border border-emerald-600">
+                💰 ${story.revenue}
+              </div>
+            </div>
+
+            <div class="md:col-span-8 space-y-4">
+              <p class="font-display font-bold text-lg sm:text-2xl text-brand-navy dark:text-white leading-relaxed italic">
+                ${story.quote}
+              </p>
+
+              <div class="pt-4 border-t border-brand-navy/15 dark:border-white/10 space-y-2">
+                <span class="text-xs font-mono uppercase tracking-wider text-gray-500 font-bold block">The Trajectory</span>
+                ${story.timeline.map(t => `
+                  <div class="flex items-center gap-2 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <span class="text-brand-coral">➔</span>
+                    <span>${t}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+          </div>
+        `;
+        track.appendChild(slide);
+
+        // Dot
+        const dot = document.createElement('button');
+        dot.ariaLabel = `Go to story ${idx + 1}`;
+        dot.className = `w-3 h-3 rounded-full border border-brand-navy transition-all ${idx === currentStoryIdx ? 'bg-brand-coral w-8' : 'bg-brand-navy/20 dark:bg-white/30'}`;
+        dot.addEventListener('click', () => {
+          currentStoryIdx = idx;
+          updateCarousel();
+          sound.pop();
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      const track = document.getElementById('carouselTrack');
+      track.style.transform = `translateX(-${currentStoryIdx * 100}%)`;
+      const dots = document.querySelectorAll('#carouselDots button');
+      dots.forEach((d, idx) => {
+        if (idx === currentStoryIdx) {
+          d.className = 'w-8 h-3 rounded-full border border-brand-navy bg-brand-coral transition-all';
+        } else {
+          d.className = 'w-3 h-3 rounded-full border border-brand-navy bg-brand-navy/20 dark:bg-white/30 transition-all';
+        }
+      });
+    }
+
+    document.getElementById('carouselPrevBtn').addEventListener('click', () => {
+      currentStoryIdx = (currentStoryIdx - 1 + STORIES_DATA.length) % STORIES_DATA.length;
+      updateCarousel();
+      sound.pop();
+    });
+
+    document.getElementById('carouselNextBtn').addEventListener('click', () => {
+      currentStoryIdx = (currentStoryIdx + 1) % STORIES_DATA.length;
+      updateCarousel();
+      sound.pop();
+    });
+
+    renderStories();
+
+    /* -------------------------------------------------------------
+     * 12. JOIN FORM CELEBRATION & LOCALSTORAGE
+     * -----------------------------------------------------------*/
+    const signupForm = document.getElementById('signupForm');
+    const signupContainer = document.getElementById('signupContainer');
+    const signupSuccessState = document.getElementById('signupSuccessState');
+    const userEmailInput = document.getElementById('userEmailInput');
+    const assignedMemberId = document.getElementById('assignedMemberId');
+    const resetSignupBtn = document.getElementById('resetSignupBtn');
+
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = userEmailInput.value.trim();
+      if (!email) return;
+
+      const randomId = Math.floor(14281 + Math.random() * 50);
+      assignedMemberId.textContent = `#${randomId}`;
+
+      signupContainer.classList.add('hidden');
+      signupSuccessState.classList.remove('hidden');
+
+      sound.fanfare();
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 100,
+          spread: 90,
+          origin: { y: 0.6 },
+          colors: ['#FF5E5E', '#FFC837', '#7A5AF8', '#00D6B2']
+        });
+      }
+      showToast('Welcome to the Collective! VIP Badge created. 🎉', '✨');
+    });
+
+    resetSignupBtn.addEventListener('click', () => {
+      signupSuccessState.classList.add('hidden');
+      signupContainer.classList.remove('hidden');
+      userEmailInput.value = '';
+      sound.pop();
+    });
+
+  </script>
+</body>
+</html>
